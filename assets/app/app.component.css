@@ -1,0 +1,22 @@
+header{
+  background-color:lightblue; /*#B3DBC0;*/
+  /*color: #BBC3C6;*/
+  padding:5px 0;
+  border-bottom: 2px black solid;
+}
+main{
+  background-color: #FDF6F6;
+  /*margin-bottom: 5px;*/
+}
+.about{
+  clear: both;
+  padding:10px 0;
+  background-color: #67BACA;
+
+}
+footer{
+  background-color: lightgrey;/*#67BACA;*/
+  color :white;
+  border-bottom:2px #FE0000  solid;
+
+}

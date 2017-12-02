@@ -1,0 +1,245 @@
+
+.main-row {
+  margin: 0 0 5px 10px;
+
+}
+.back {
+	/*cursor: pointer;
+	background: url(../../../../assets/images/back.png) no-repeat 5px 5px;
+	color: red;
+  padding:10px 20px 10px 10px;*/
+}
+.backP{
+   position: relative;
+   margin-right: 10px;
+
+}
+
+.likesP{
+   float: right;
+   margin: 0 auto;
+
+}
+
+.next {
+	/*cursor: pointer;
+	background: url(../../../../assets/images/next.png) no-repeat 30px 5px;
+	color: red;
+  padding:10px 15px 10px 20px;*/
+}
+.nextP{
+  position:relative;
+  margin-right: 0px;
+
+}
+.comment{
+
+}
+.commentP{
+   position: relative;
+   margin-right: 0px;
+
+}
+.list{
+    background-color: grey;/*#B3DBC0;*/
+    width: 20%;
+    height:350px;
+    overflow: scroll;
+		border-radius:3px;
+		margin-top: 5px;
+}
+.item{
+   width:70%;
+   height:320px;
+
+}
+.display-image{
+  position: relative;
+	 width:100%;
+   height: 90%;
+   padding: 0 5px;
+   margin: 0 auto;
+}
+.display-image img{
+  /*position: relative;*/
+  /*position: absolute;*/
+   max-width:100%;
+   max-height: 100%;
+   margin: auto;
+   display:block;
+
+}
+.control{
+  position: relative;
+  height: 10%;
+  width:100%;
+  margin:5px auto;
+
+	color:#FE0000;
+}
+
+a:hover{
+   color:hotpink;
+}
+a:active{
+  color:green;
+}
+
+.commentP img{
+   left:0px;
+}
+.control button {
+  margin-right: 2px;
+}
+
+.item-btn{
+   background-color: #B3DBC0;
+   display:inline-block;
+}
+.display-image .play{
+  position: absolute;
+   /*top:-35px;*/
+
+}
+.display-image .back{
+    position: absolute;
+    top:40%;
+}
+.display-image .next{
+    position: absolute;
+    top:40%;
+    right:0;
+}
+.display-image .play{
+    position: absolute;
+    bottom:0;
+    left:45%;
+}
+.display-image .source{
+    position: absolute;
+    bottom:4%;
+    right:10%;
+    color: red;
+}
+.inlineElement{
+
+   display:inline-block;
+}
+.control img {
+  /*position: relative;
+ /* margin: 5px 10px 0 0;*/
+  width:21px;
+  height:21px;
+}
+@media (min-width: 576px) {
+  .list img{
+    display:block;
+    width:90%;
+    margin: 0 auto;
+  }
+  .control{
+   width:90%;
+
+  }
+  .control img {
+    /*position: relative;
+   /* margin: 5px 10px 0 0;*/
+    width:24px;
+    height:24px;
+  }
+  .backP, .nextP, .commentP{
+     position: relative;
+     margin-right: 10px;
+
+  }
+  .display-image .source{
+      bottom:4.5%;
+  }
+}
+ /*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .list img{
+    display:block;
+    width:85%;
+    margin: 0 auto;
+  }
+  .control{
+     width:90%;
+   }
+   .control img {
+     /*position: relative;
+    /* margin: 5px 10px 0 0;*/
+     width:28px;
+     height:28px;
+   }
+ }
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .row{
+		padding: 5px;
+	}
+  .list{
+
+      /*width:40%;*/
+      height:520px;
+      overflow: scroll;
+  }
+  .list img{
+    display:block;
+    width:60%;
+    margin: 0 auto;
+  }
+  .item{
+
+     height:520px;
+     /*margin: 0 auto;*/
+  }
+  .control{
+     width:80%;
+   }
+   .control img {
+     /*position: relative;
+    /* margin: 5px 10px 0 0;*/
+     width:32px;
+     height:32px;
+   }
+
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  .list{
+
+      /*width:40%;*/
+
+      width: 20%;
+      height:500px;
+      overflow: scroll;
+  }
+  .item{
+     width:100%;
+     height:500px;
+
+  }
+  .list img{
+    display:block;
+    width:50%;
+    margin: 0 auto;
+  }
+  .control{
+     /*width:75%;*/
+
+
+   }
+   .control img {
+     /*position: relative;
+    /* margin: 5px 10px 0 0;*/
+     width:32px;
+     height:32px;
+     text-decoration:
+
+   }
+
+
+}

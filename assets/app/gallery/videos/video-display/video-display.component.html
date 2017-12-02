@@ -1,0 +1,46 @@
+<div class="row main-row">
+  <div class="list col-md-4 col-sm-3 col-xs-2">
+     <div *ngIf="videoList === undefined || videoList.length === 0">
+       {{errMessage}}
+     </div>
+    <div *ngIf="videoList != undefined">
+        <a *ngFor="let video of videoList" (click)="setSelectedVideo(video)">
+          <video width="320" height="240">
+             <source [src]="'../../assets/videos/'+ video.name " type="video/mp4"
+              class="img-fluid img-thumbnail mt-1"
+              [style.border]="video == selectedVideo ? '2px solid red': '1px solid white' " >
+              Your browser does not support the video tag.
+          </video>
+        </a>
+   </div>
+  </div>
+  <div class="item col-md-8 col-sm-9 col-xs-10">
+       <div class="display-image">
+         <div class="video-play" *ngFor="let vid of videoList" >
+            <video *ngIf= "vid === selectedVideo" width="320" height="240" controls>
+               <source [src]="'../../assets/videos/'+ vid.name " type="video/mp4"
+                 class="img-fluid img-thumbnail mt-1">
+                 Your browser does not support the video tag.
+            </video>
+         </div>
+          <img [src]="'/assets/images/' + playPauseImage" class="img-fluid play" (click)="slidePlay()"/>
+          <img src="/assets/images/back.png" class="img-fluid back"(click)="onBack()"/>
+          <img src="/assets/images/next.png" class="img-fluid next"(click)="onNext()"/>
+
+       </div>
+       <div *ngIf="videoList.length !== 0" class="control">
+         <p class="inlineElement backControl">
+            {{back}}<img src="/assets/images/back.png" class="img-fluid back"(click)="onBack()"/>
+         </p>
+         <p class="inlineElement nextControl">
+            <img src="/assets/images/next.png" class="img-fluid next"(click)="onNext()"/>{{next}}
+         </p>
+
+           <p class=" likesP" >
+              <img  [src]="'/assets/images/' + likeImage" class="img-fluid likes"(click)="onLike(selectedVideo)"/>
+              {{likes}}
+            </p>
+
+        </div>
+    </div>
+</div>

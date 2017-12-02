@@ -1,0 +1,65 @@
+<form novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
+   <div class="form-group">
+      <label for="styles">Styles </label>
+      <select class="form-control" id="styles" formControlName="style">
+         <option>Any</option>
+         <option> Atire</option>
+         <option>Casuals</option>
+         <option>Beads</option>
+         <option>Head Tie</option>
+         <option>Make Overs</option>
+      </select>
+   </div>
+   <div class="form-group">
+      <label for="function">Function</label>
+      <select class="form-control" id="function" formControlName="function">
+         <option>Any</option>
+         <option>Wedding</option>
+         <option>Naming</option>
+         <option>Birthday</option>
+         <option>Burial</option>
+         <option>Others</option>
+     </select>
+  </div>
+   <div class="form-group">
+      <label for="imageType">Image type</label>
+      <select class="form-control" id="imageType" formControlName="imageType">
+         <option>Individual</option>
+         <option>Group</option>
+         <option>Family</option>
+         <option>Multi Embedded</option>
+         <option>Any</option>
+      </select>
+   </div>
+<!--<div class="form-group row">
+  <label for="color1" class="col-3 col-form-label">Color 1</label>
+  <div class="col-9">
+    <input class="form-control" type="color" value="#563d7c" id="color1">
+  </div>
+</div>
+   <div class="form-group row">
+  <label for="color2" class="col-3 col-form-label">Color 2</label>
+  <div class="col-9">
+    <input class="form-control" type="color" value="#563d7c" id="color2">
+  </div>
+</div>-->
+   <div class="form-group">
+      <label for="source">Source</label>
+      <select class="form-control" id="source" formControlName="source">
+         <option>Web</option>
+         <option>Users</option>
+         <option>Captured</option>
+         <option>Events</option>
+         <option>Any</option>
+      </select>
+   </div>
+  <!-- <div class="form-group">
+      <label for="timeAdded">Time Added</label>
+      <select class="form-control" id="timeAdded" formControlName="timeAdded">
+         <option>Any</option>
+         <option>Recently</option>
+         <option>Old</option>
+      </select>
+   </div>-->
+   <button type="submit" class="btn btn-primary">Search</button>
+</form>

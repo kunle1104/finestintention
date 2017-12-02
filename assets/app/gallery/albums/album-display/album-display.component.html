@@ -1,0 +1,42 @@
+<div class="row main-row">
+    <div class="list col-md-4 col-sm-3 col-xs-2">
+       <div *ngIf="albumList === undefined || albumList.length === 0">
+         {{errMessage}}
+       </div>
+      <div *ngIf="albumList != undefined">
+          <a *ngFor="let album of albumList" (click)="setSelectedAlbum(album)">
+             <img [src]="'/assets/albums/'+album.name+'/img1.jpg'" class="img-fluid img-thumbnail mt-1"
+             [style.border]="album == selectedAlbum ? '2px solid red': '1px solid white' "/>
+             <p>+{{album.length}}</p>
+          </a>
+      </div>
+    </div>
+    <div class="item col-md-8 col-sm-9 col-xs-10">
+         <div class="display-image">
+            <!--<img [src]= "'/assets/gallery/' + selectedPics.path"
+                  class="img-fluid img-responsive img-thumbnail mt-1"/>-->
+            <img [src]= "'../../assets/albums/'+ selectedAlbum.name + '/' + selectedPicsPath"
+                  class="img-fluid img-responsive img-thumbnail mt-1"/>
+            <p class="source">Source: <span>{{source}} </span></p>
+
+            <img [src]="'/assets/images/' + playPauseImage" class="img-fluid play" (click)="slidePlay()"/>
+            <img src="/assets/images/back.png" class="img-fluid back"(click)="onBackPicture()"/>
+            <img src="/assets/images/next.png" class="img-fluid next"(click)="onNextPicture()"/>
+
+         </div>
+         <div *ngIf="albumList.length !== 0" class="control">
+           <p class="inlineElement backControl">
+              {{backAlbum}}<img src="/assets/images/back.png" class="img-fluid back"(click)="onBackAlbum()"/>
+           </p>
+           <p class="inlineElement nextControl">
+              <img src="/assets/images/next.png" class="img-fluid next"(click)="onNextAlbum()"/>{{nextAlbum}}
+           </p>
+
+             <p class=" likesP" >
+                <img  [src]="'/assets/images/' + likeImage" class="img-fluid likes"(click)="onLike(selectedAlbum)"/>
+                {{likesAlbum}}
+              </p>
+
+          </div>
+      </div>
+</div>

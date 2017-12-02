@@ -1,0 +1,56 @@
+
+.row{
+
+   /*background-color: #B3DBC0;*/
+
+}
+/*.facebook{
+   width:10%;
+   float: right;
+   margin:2%;
+}
+.register{
+   float: right;
+}*/
+
+.navbar{
+  background-color: #B3DBC0;
+   /*width:80%;
+   margin: 0 auto;
+   border-radius: 5px;
+   clear:both;*/
+}
+.navbar a{
+   color: #FFFFFF;
+}
+.navbar a:hover{
+   color: blue;
+   /*transform:scale(1.2);*/
+}
+.navbar a:active{
+   color: wine;
+}
+h4{
+  color:blue;
+}
+h4 span{
+   color:red;
+}
+h4 img{
+   width:48px;
+}
+p{
+  color:black;
+  margin-bottom: 0;
+}
+small{
+  color:red;
+}
+.sticky {
+    margin-top: 0 !important;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+    border-radius: 0 0 0.5em 0.5em;
+    width:100%;
+}
