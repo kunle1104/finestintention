@@ -12,7 +12,7 @@ var albumRoutes = require('./routes/albums');
 var videoRoutes = require('./routes/videos');
 
 var app = express();
-mongoose.connect('localhost:27017/fi-test-db');
+mongoose.connect('localhost:27017/fi-africa');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
