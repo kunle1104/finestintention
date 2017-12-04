@@ -23,6 +23,7 @@ export class PicsDisplayComponent implements OnInit {
 
   allPics : Picture[] = [];
   allPictures : Picture[] =[];
+  all:Pics[] = [];
   picsList : Picture[] = [];
   selectedPics:Picture = {
     "id": 20,
@@ -72,13 +73,10 @@ export class PicsDisplayComponent implements OnInit {
 
   }
   getMyPics(){
-    this.galleryService.getPictures()
+    this.galleryService.getAllPictures()
       .subscribe(
           pics => {
-            let tempPics : Picture[]= [];
-            tempPics = pics;
-            //console.log(pics[10].id);
-
+             this.all = pics;
           },
           error => {
              console.log('error fetching pictures ******');
@@ -298,43 +296,18 @@ export class PicsDisplayComponent implements OnInit {
     this.likes =  ' ' + this.selectedPics.likes ;
   }
   slidePlay(){
-
-    /*let tempPicture: Picture = {
-
-         id : 0,
-         path : " ",
-         primaryColor : " ",
-         secondaryColor : " ",
-         style : " ",
-         imageType : 0,
-         source : 0,
-         fiFunction :  0,
-         description : " ",
-         likes :  0,
-         uploadedDate : new Date()
-
-    };*/
     //console.log(tempPicture);
-    /*for(let pic of this.allPics){
+    //let all: Pics[];
+    for(let pic of this.all){
        //let pic = this.allPics[5];
-       tempPicture.id = pic.id;
-       tempPicture.path = pic.path;
-       tempPicture.primaryColor = pic.primaryColor;
-       tempPicture.secondaryColor = pic.secondaryColor;
-       tempPicture.style = pic.style;
-       tempPicture.imageType = pic.imageType;
-       tempPicture.source = pic.source;
-       tempPicture.fiFunction =  pic.function;
-       tempPicture.description =  pic.desc;
-       tempPicture.likes =  pic.likes;
-       //tempPicture.uploadedDate = Date.now();
-       console.log(tempPicture);
+
+        console.log(pic);
        this.galleryService.addPicture(pic)
         .subscribe(
-            //data => console.log(data),
+            data => console.log(data),
             error => console.error(error)
         );
-      }*/
+      }
 
      if(this.playPauseImage ==="play.png"){
           this.playPauseImage = "pause.png"
