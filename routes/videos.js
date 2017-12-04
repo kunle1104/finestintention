@@ -22,18 +22,18 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-   console.log('In the album server');
+   console.log('In the video server');
    console.log(req.body);
    var video = new Video ({
      videoId:req.body.id,
      name: req.body.name,
      duration: req.body.duration,
-     fiFunction: req.body.fiFunction,
+     fiFunction: req.body.function,
      month: req.body.month,
      place: req.body.place,
      description: req.body.description,
      likes:req.body.likes,
-     source: req.body.source,
+     source: req.body.source
      //uploadedDate:req.body.uploadedDate
    });
    console.log(video);
