@@ -20,6 +20,7 @@ export class VideoDisplayComponent implements OnInit {
   playPauseImage:string ="play.png";
   likeImage:string = "like1.png";
 
+  all:Video[]=[];
   allVideos : Video1[] = [];
   videoList : Video1[] = [];
   selectedVideo:Video1 = {
@@ -46,7 +47,7 @@ export class VideoDisplayComponent implements OnInit {
    ngOnInit() {
       this.getAllVideos();
       this.getVideoDisplayMessage();
-      //this.getMyPics();
+      this.getMyVideos();
    }
    ngOnDestroy() {
      for(let video of this.allVideos){
@@ -61,6 +62,18 @@ export class VideoDisplayComponent implements OnInit {
         }
      }
       this.subscription.unsubscribe();
+   }
+   getMyVideos(){
+     this.galleryService.getAllVideos()
+       .subscribe(
+           videos => {
+              this.all = videos;
+           },
+           error => {
+              console.log('error fetching pictures ******');
+              this.errMessage ='Error Fetching Pictures, Please Search Again';
+           }
+        );
    }
    getAllVideos(){
      this.galleryService.getVideos()
@@ -253,13 +266,15 @@ export class VideoDisplayComponent implements OnInit {
      this.likes =  ' ' + this.selectedVideo.likes ;
    }
    slidePlay(){
-     /*
-     this.galleryService.addVideo(all[5])
-      .subscribe(
-          data => console.log(data),
-          error => console.error(error)
-      );*/
+     for(let video of this.all){
+       console.log(video);
+        this.galleryService.addVideo(video)
+        .subscribe(
+            data => console.log(data),
+            error => console.error(error)
 
+        );
+     }
 
    }
 }
