@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-//import {Album} from '../album';
+import {Album} from '../album';
 import {Album1} from '../album.model';
 import {GalleryService} from '../../gallery.service';
 
@@ -29,6 +29,7 @@ export class AlbumDisplayComponent implements OnInit {
   playPauseImage:string ="play.png";
   likeImage:string = "like1.png";
 
+  all:Album[] = [];
   allAlbums : Album1[] = [];
   albumList: Album1[] = [];
   selectedAlbum: Album1 = {
@@ -63,6 +64,7 @@ export class AlbumDisplayComponent implements OnInit {
   ngOnInit() {
      this.getAlbums();
      this.getAlbumDisplayMessage();
+     this.getMyAlbums();
   }
   ngOnDestroy() {
     for(let album of this.allAlbums){
@@ -75,6 +77,18 @@ export class AlbumDisplayComponent implements OnInit {
        }
     }
     this.subscription.unsubscribe();
+}
+getMyAlbums(){
+  this.galleryService.getAllAlbums()
+    .subscribe(
+        albums => {
+           this.all = albums;
+        },
+        error => {
+           console.log('error fetching pictures ******');
+           this.errMessage ='Error Fetching Pictures, Please Search Again';
+        }
+     );
 }
 
   getAlbums(){
@@ -300,12 +314,16 @@ export class AlbumDisplayComponent implements OnInit {
     }
   }
   slidePlay(){
-    /*this.galleryService.addAlbum(this.allAlbums[7])
-     .subscribe(
-         data => console.log(data),
-         error => console.error(error)
-     );*/
 
+     for(let album of this.all){
+       console.log(album);
+        this.galleryService.addAlbum(album)
+        .subscribe(
+            data => console.log(data),
+            error => console.error(error)
+
+        );
+     }
      if(this.playPauseImage ==="play.png"){
           this.playPauseImage = "pause.png"
           this.timerId = setInterval(()=> {
