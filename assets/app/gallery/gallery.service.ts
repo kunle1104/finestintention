@@ -82,7 +82,7 @@ export class GalleryService {
         return this.subject.asObservable();
   }
   //-----------------------------------------------------------------------
-  addAlbum(album: Album1) {
+  addAlbum(album: Album) {
       const body = JSON.stringify(album);
       const headers = new Headers({'Content-Type': 'application/json'});
       return this.http.post('http://localhost:3000/albums', body, {headers: headers})
@@ -126,7 +126,7 @@ export class GalleryService {
         return this.subject.asObservable();
   }
   //------------------------------------------------------------------------
-  addVideo(video: Video1) {
+  addVideo(video: Video) {
       const body = JSON.stringify(video);
       const headers = new Headers({'Content-Type': 'application/json'});
       return this.http.post('http://localhost:3000/videos', body, {headers: headers})
