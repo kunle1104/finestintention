@@ -1,312 +1,280 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-//import {Album} from '../album';
-import {Album1} from '../album.model';
+//import {Video} from '../video';
+import {Video1} from '../video.model';
 import {GalleryService} from '../../gallery.service';
 
 @Component({
-  selector: 'app-album-display',
-  templateUrl: './album-display.component.html',
-  styleUrls: ['./album-display.component.css']
+  selector: 'app-video-display',
+  templateUrl: './video-display.component.html',
+  styleUrls: ['./video-display.component.css']
 })
-export class AlbumDisplayComponent implements OnInit {
-  nextPicture:number = 0;
-  backPicture:number = 0;
-
-  backAlbum:number = 0;
-  nextAlbum:number = 0;
-
-  myLikesPicture:number;
-  likesPicture:string;
-
-  myLikesAlbum:number;
-  likesAlbum:string;
-
-  source:string;
+export class VideoDisplayComponent implements OnInit {
+  back:number = 0;
+  next:number = 0;
+  myLikes:number = 0;
+  likes:string = '0';
   liked:boolean = false;
-
+  source:string = '';
   timerId: any;
   playPauseImage:string ="play.png";
   likeImage:string = "like1.png";
 
-  allAlbums : Album1[] = [];
-  albumList: Album1[] = [];
-  selectedAlbum: Album1 = {
+  //all:Video[]=[];
+  allVideos : Video1[] = [];
+  videoList : Video1[] = [];
+  selectedVideo:Video1 = {
     "id": 1,
-    "name": "album1",
-    "length": 42,
-    "fiFunction": 1,
+    "name": "video1.mp4",
+    "duration": 2.18,
+    "fiFunction": 5,
     "month": "September 2017",
-    "place": "London - United Kingdom",
-    "description": "A View Pics Wedding",
+    "place": "Sydney Australia",
+    "description": "Ileya Party",
     "likes": 0,
     "source": 1,
     "uploadedDate": new Date()
   };
-
-  selectedPicsCounter:number = 1;
-  selectedPicsPath:string = 'img' + this.selectedPicsCounter + '.jpg';
-
+  //tempPics : Pics[] = [ ];
   likesArr:any[] = [];
 
-  errMessage : string = 'Loding Albums';
+  errMessage : string = 'Loding Videos';
 
   displayMessage: any;
   subscription: Subscription;
+   constructor(private galleryService: GalleryService) { }
 
-  baseUrl: string = 'http://localhost:4568';
+   ngOnInit() {
+      this.getAllVideos();
+      this.getVideoDisplayMessage();
+      //this.getMyVideos();
+   }
+   ngOnDestroy() {
+     for(let video of this.allVideos){
+       //console.log(video.id);
+        if(this.likesArr[video.id] == true){
+           //++pict.likes;
 
-  headers = new Headers({'Content-Type': 'application/json'});
-
-  constructor(private galleryService: GalleryService) { }
-
-  ngOnInit() {
-     this.getAlbums();
-     this.getAlbumDisplayMessage();
-     this.getMyAlbums();
-  }
-  ngOnDestroy() {
-    for(let album of this.allAlbums){
-       if(this.likesArr[album.id] !== false){
-          //++album.likes;
-          this.galleryService.updateAlbum(album)
-             .subscribe(
-                 result => console.log(result)
-             );
-       }
-    }
-    this.subscription.unsubscribe();
-}
-getAlbums(){
-    this.galleryService.getAlbums()
-      .subscribe(
-          albums => {
-             this.allAlbums = albums;
-             for(let album of this.allAlbums){
-                this.likesArr[album.id] = false;
-             }
-             this.setList({function:0, place:"Any", month:""});
-          },
-          error => {
-             this.errMessage ='Error Fetching Albums, Please Search Again';
-          }
-       );
-  }
-  getAlbumDisplayMessage(){
-    this.subscription = this.galleryService.getAlbumDisplayMessage()
-    .subscribe(message => {
-      console.log(message);
-         this.setList(message);
-
-    });
-  }
-  setList(value){
-     let myAlbum1 : Album1[] = [ ];
-     let myAlbum2 : Album1[] = [ ];
-     let myAlbum3 : Album1[] = [ ];
-     if(value.function === 0 && value.place === "Any" && value.month === ""){
-        myAlbum1 = this.allAlbums.slice();
-        this.setAlbumsList(myAlbum1.slice());
-       }
-     else{
-        if(value.function !== 0){
-           for(let album of this.allAlbums){
-              if(album.fiFunction === value.function){
-                 myAlbum1.push(album);
-              }
+           this.galleryService.updateVideo(video)
+              .subscribe(
+                  result => console.log(result)
+              );
+        }
+     }
+      this.subscription.unsubscribe();
+   }
+   /*getMyVideos(){
+     this.galleryService.getAllVideos()
+       .subscribe(
+           videos => {
+              this.all = videos;
+           },
+           error => {
+              console.log('error fetching pictures ******');
+              this.errMessage ='Error Fetching Pictures, Please Search Again';
            }
-         }else {
-           myAlbum1 = this.allAlbums.slice();
-         }
-         if(value.place !== "Any"){
-            for(let album of myAlbum1){
-               if(album.place === value.place){
-                  myAlbum2.push(album);
+        );
+   }*/
+   getAllVideos(){
+     this.galleryService.getVideos()
+       .subscribe(
+           videos => {
+             //let tempPics : Pics[];
+              this.allVideos = videos;
+              for(let video of this.allVideos){
+                 this.likesArr[video.id] = false;
+              }
+              this.setList({function:0, place:"Any", month:""});
+              //this.setPicsList(this.allPics);
+
+           },
+           error => {
+              console.log('error fetching videos');
+              this.errMessage ='Error Fetching Videos, Please Search Again';
+           }
+        );
+   }
+   getVideoDisplayMessage(){
+     this.subscription = this.galleryService.getVideoDisplayMessage()
+     .subscribe(message => {
+       //console.log(message);
+          this.setList(message);
+
+     });
+   }
+   setList(value){
+      //let myPics : Pics[] = [ ];
+      let myVideo1 : Video1[] = [ ];
+      let myVideo2 : Video1[] = [ ];
+      let myVideo3 : Video1[] = [ ];
+      //let myAlbum4 : Album[] = [ ];
+
+      if(value.function === 0 && value.place === "Any" && value.month === ""){
+         myVideo1 = this.allVideos.slice();
+         this.setVideoList(myVideo1.slice());
+        }
+      else{
+         if(value.function !== 0){
+            for(let video of this.allVideos){
+               if(video.fiFunction === value.function){
+                  myVideo1.push(video);
                }
             }
           }else {
-            myAlbum2 = myAlbum1.slice();
+            myVideo1 = this.allVideos.slice();
           }
-          if(value.month !== ""){
-             for(let album of myAlbum2){
-                if(album.month === value.month){
-                   myAlbum3.push(album);
+          if(value.place !== "Any"){
+             for(let video of myVideo1){
+                if(video.place === value.place){
+                   myVideo2.push(video);
                 }
-              }
+             }
            }else {
-             myAlbum3 = myAlbum2.slice();
+             myVideo2 = myVideo1.slice();
            }
-           this.setAlbumsList(myAlbum3.slice());
-       }
-  }
-  setAlbumsList(list:Album1[]) {
-     this.myLikesAlbum = 0;
-     this.backAlbum = 0;
-     this.nextAlbum = 0;
-     if(list.length === 0 ){
-         this.albumList.length = 0;
-         this.selectedAlbum = {
-           "id": 1,
-           "name": "album1",
-           "length": 42,
-           "fiFunction": 1,
-           "month": "September 2017",
-           "place": "London - United Kingdom",
-           "description": "A View Pics Wedding",
-           "likes": 0,
-           "source": 1,
-           "uploadedDate": new Date()
-         };
-         this.myLikesAlbum = this.selectedAlbum.likes;
-         this.likesAlbum =  ' ' + this.myLikesAlbum;
-
-         this.setAlbumSource(this.selectedAlbum);
-         this.errMessage = "There are no matches, Please try other search options";
-     }else{
-        this.albumList = list;
-        this.selectedAlbum = this.albumList[0];
-        this.myLikesAlbum = this.selectedAlbum.likes;
-        this.likesAlbum =  ' ' + this.myLikesAlbum;
-        this.nextAlbum = this.albumList.length-1;
-        this.setAlbumSource(this.selectedAlbum);
+           if(value.month !== ""){
+              for(let video of myVideo2){
+                 if(video.month === value.month){
+                    myVideo3.push(video);
+                 }
+               }
+            }else {
+              myVideo3 = myVideo2.slice();
+            }
+            this.setVideoList(myVideo3.slice());
+        }
    }
-  }
-  setAlbumSource(album){
-    if(album.source === 1){
-      this.source = 'Web';
-    }
-    if(album.source === 2){
-      this.source = 'Users';
-    }
-    if(album.source === 3){
-      this.source = 'Captured by us';
-    }
-    if(album.source === 4){
-      this.source = 'Events';
-    }
-  }
+   setVideoList(list:Video1[]) {
+      this.myLikes = 0;
+      this.back = 0;
+      this.next= 0;
+      if(list.length === 0 ){
+          this.videoList.length = 0;
+          this.selectedVideo = {
+            "id": 1,
+            "name": "video1.mp4",
+            "duration": 2.18,
+            "fiFunction": 5,
+            "month": "September 2017",
+            "place": "Sydney Australia",
+            "description": "Ileya Party",
+            "likes": 0,
+            "source": 1,
+            "uploadedDate": new Date()
+          };
+          this.myLikes = this.selectedVideo.likes;
+          this.likes =  ' ' + this.myLikes;
 
-  setSelectedAlbum(album){
+          this.setVideoSource(this.selectedVideo);
+          this.errMessage = "There are no matches, Please try other search options";
+      }else{
+         this.videoList = list;
+         this.selectedVideo = this.videoList[0];
+         this.myLikes = this.selectedVideo.likes;
+         this.likes =  ' ' + this.myLikes;
+         this.next = this.videoList.length-1;
+         this.setVideoSource(this.selectedVideo);
+    }
+   }
+   setSelectedVideo(video){
      let index:number;
-     this.selectedAlbum = album;
-     this.myLikesAlbum = this.selectedAlbum.likes;
-     this.likesAlbum =  ' ' + this.myLikesAlbum;
+      this.selectedVideo = video;
+      //console.log(pic)
+      this.myLikes = this.selectedVideo.likes;
+      this.likes =  ' ' + this.myLikes;
 
-     index = this.albumList.indexOf(this.selectedAlbum);
-     this.nextAlbum = (this.albumList.length-1) - index;
-     this.backAlbum = index;
-     if(this.likesArr[this.selectedAlbum.id]){
+      index = this.videoList.indexOf(this.selectedVideo);
+      this.next = (this.videoList.length-1) - index;
+      this.back = index;
+      if(this.likesArr[this.selectedVideo.id]){
          this.likeImage = "like2.png";
-     }else{
+      }else{
          this.likeImage = "like1.png";
       }
 
-      this.setAlbumSource(this.selectedAlbum);
-      this.selectedPicsCounter = 1;
-      this.selectedPicsPath = 'img' + this.selectedPicsCounter + '.jpg';
-      this.initPicsControl();
-  }
-  initPicsControl(){
-     this.nextPicture = this.selectedAlbum.length - 1;
-     this.backPicture = 0;
-     this.selectedPicsCounter = 1;
-     this.selectedPicsPath = 'img' + this.selectedPicsCounter + '.jpg';
+      this.setVideoSource(this.selectedVideo);
+   }
+   setVideoSource(video){
+     if(video.source === 1){
+       this.source = 'Web';
+     }
+     if(video.source === 2){
+       this.source = 'Users';
+     }
+     if(video.source === 3){
+       this.source = 'Captured by us';
+     }
+     if(video.source === 4){
+       this.source = 'Events';
+     }
+   }
 
-  }
-  onLike(album){
-    let index:number;
-    index = this.albumList.indexOf(this.selectedAlbum);
-    if(this.likesArr[album.id] === false){
-       this.likeImage = "like2.png";
-       ++this.albumList[index].likes;
-       this.likesAlbum =  ' ' + this.selectedAlbum.likes ;
-       this.likesArr[album.id] = true;
-    }else{
-       this.likeImage = "like1.png";
-       --this.albumList[index].likes;
-       this.likesAlbum =  ' ' + this.selectedAlbum.likes;
-       this.likesArr[album.id] = false;
-    }
-  }
-  onBackAlbum(){
-    let index:number;
-    if(this.backAlbum > 0 && this.backAlbum <= this.albumList.length-1){
-      ++this.nextAlbum;
-      --this.backAlbum;
-      index = this.albumList.indexOf(this.selectedAlbum);
-      this.selectedAlbum = this.albumList[--index];
-      this.initPicsControl();
-    }else{
-      this.nextAlbum = 0;
-      this.backAlbum = this.albumList.length-1;
-      this.selectedAlbum = this.albumList[this.albumList.length-1];
-      this.initPicsControl();
-    }
-    if(this.likesArr[this.selectedAlbum.id]){
-       this.likeImage = "like2.png";
-    }else{
-       this.likeImage = "like1.png";
-    }
-    this.likesAlbum =  ' ' + this.selectedAlbum.likes ;
+   onLike(video){
+     let index:number;
+     index = this.videoList.indexOf(this.selectedVideo);
+     if(this.likesArr[video.id] === false){
+        this.likeImage = "like2.png";
+        //index = this.picsList.indexOf(this.selectedPics);
+        ++this.videoList[index].likes;
+        this.likes =  ' ' + this.selectedVideo.likes ;
+        this.likesArr[video.id] = true;
+     }else{
+        this.likeImage = "like1.png";
+        //index = this.picsList.indexOf(this.selectedPics);
+        --this.videoList[index].likes;
+        this.likes =  ' ' + this.selectedVideo.likes;
+        this.likesArr[video.id] = false;
+     }
 
-  }
-  onNextAlbum(){
-    let index:number;
-    if(this.nextAlbum <= this.albumList.length-1 && this.nextAlbum > 0){
-      --this.nextAlbum;
-      ++this.backAlbum;
-      index = this.albumList.indexOf(this.selectedAlbum);
-      this.selectedAlbum = this.albumList[++index];
-      this.initPicsControl();
-    }else{
-      this.nextAlbum = this.albumList.length-1;
-      this.backAlbum = 0;
-      this.selectedAlbum = this.albumList[0];
-      this.initPicsControl();
-    }
-    if(this.likesArr[this.selectedAlbum.id]){
-       this.likeImage = "like2.png";
-    }else{
-       this.likeImage = "like1.png";
-    }
-    this.likesAlbum =  ' ' + this.selectedAlbum.likes ;
-  }
+   }
+   onBack(){
+     let index:number;
+     if(this.back > 0 && this.back <= this.videoList.length-1){
+       ++this.next;
+       --this.back;
+       index = this.videoList.indexOf(this.selectedVideo);
+       this.selectedVideo = this.videoList[--index];
+     }else{
+       this.next = 0;
+       this.back = this.videoList.length-1;
+       this.selectedVideo = this.videoList[this.videoList.length-1];
+     }
+     if(this.likesArr[this.selectedVideo.id]){
+        this.likeImage = "like2.png";
+     }else{
+        this.likeImage = "like1.png";
+     }
+     this.likes =  ' ' + this.selectedVideo.likes ;
+   }
+   onNext(){
+     let index:number;
+     if(this.next <= this.videoList.length-1 && this.next > 0){
+       --this.next;
+       ++this.back;
+       index = this.videoList.indexOf(this.selectedVideo);
+       this.selectedVideo = this.videoList[++index];
+     }else{
+       this.next = this.videoList.length-1;
+       this.back = 0;
+       this.selectedVideo = this.videoList[0];
+     }
+     if(this.likesArr[this.selectedVideo.id]){
+        this.likeImage = "like2.png";
+     }else{
+        this.likeImage = "like1.png";
+     }
+     this.likes =  ' ' + this.selectedVideo.likes ;
+   }
+   slidePlay(){
+     /*for(let video of this.all){
+       console.log(video);
+        this.galleryService.addVideo(video)
+        .subscribe(
+            data => console.log(data),
+            error => console.error(error)
 
-  onBackPicture(){
-    if(this.backPicture > 0 && this.backPicture <= this.selectedAlbum.length ){
-      ++this.nextPicture;
-      --this.backPicture;
-      --this.selectedPicsCounter;
-      this.selectedPicsPath = 'img' + this.selectedPicsCounter + '.jpg';
-    }else{
-      this.nextPicture = 0;
-      this.backPicture = this.selectedAlbum.length - 1;
-      this.selectedPicsCounter = this.selectedAlbum.length ;
-      this.selectedPicsPath = 'img' + this.selectedPicsCounter + '.jpg';
-    }
-  }
-  onNextPicture(){
-    if(this.nextPicture <= this.selectedAlbum.length && this.nextPicture > 0){
-      --this.nextPicture;
-      ++this.backPicture;
-      ++this.selectedPicsCounter;
-      this.selectedPicsPath = 'img' + this.selectedPicsCounter + '.jpg';
-    }else{
-      this.nextPicture = this.selectedAlbum.length - 1;
-      this.backPicture = 0;
-      this.selectedPicsCounter = 1;
-      this.selectedPicsPath = 'img' + this.selectedPicsCounter + '.jpg';
-    }
-  }
-  slidePlay(){
-if(this.playPauseImage ==="play.png"){
-          this.playPauseImage = "pause.png"
-          this.timerId = setInterval(()=> {
-          this.onNextPicture(); }, 1000)
-      }else{
-          this.playPauseImage = "play.png"
-          clearInterval(this.timerId)
-       }
-  }
+        );
+     }*/
 
+   }
 }
