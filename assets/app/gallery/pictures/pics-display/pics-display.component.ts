@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import {Pics} from '../pics';
 import { Picture } from '../picture.model';
 import {GalleryService} from '../../gallery.service';
 
@@ -23,7 +22,6 @@ export class PicsDisplayComponent implements OnInit {
 
   allPics : Picture[] = [];
   allPictures : Picture[] =[];
-  all:Pics[] = [];
   picsList : Picture[] = [];
   selectedPics:Picture = {
     "id": 20,
@@ -38,30 +36,20 @@ export class PicsDisplayComponent implements OnInit {
     "likes":20,
     "uploadedDate": new Date()
   };
-  //tempPics : Pics[] = [ ];
   likesArr:any[] = [];
-
   errMessage : string = 'Loding Pictures';
-
   displayMessage: any;
   subscription: Subscription;
 
   constructor(private galleryService: GalleryService) { }
 
   ngOnInit() {
-     //this.getPicsList();
      this.getAllPics();
      this.getDisplayMessage();
-     this.getMyPics();
-     //this.subscription = this.galleryService.getDisplayMessage()
-     //.subscribe(message => { this.displayMessage = message; });
-
   }
   ngOnDestroy() {
-        // unsubscribe to ensure no memory leaks
         for(let pict of this.allPics){
            if(this.likesArr[pict.id] !== false){
-              //++pict.likes;
               this.galleryService.updatePicture(pict)
                  .subscribe(
                      result => console.log(result)
@@ -72,31 +60,15 @@ export class PicsDisplayComponent implements OnInit {
         this.subscription.unsubscribe();
 
   }
-  getMyPics(){
-    this.galleryService.getAllPictures()
-      .subscribe(
-          pics => {
-             this.all = pics;
-          },
-          error => {
-             console.log('error fetching pictures ******');
-             this.errMessage ='Error Fetching Pictures, Please Search Again';
-          }
-       );
-  }
-
   getAllPics(){
     this.galleryService.getPictures()
       .subscribe(
           pics => {
-            //let tempPics : Pics[];
-             this.allPics = pics;
+            this.allPics = pics;
              for(let pict of this.allPics){
                 this.likesArr[pict.id] = false;
              }
              this.setList({style:"0", function:0, imageType: 1, source: 1});
-             //this.setPicsList(this.allPics);
-
           },
           error => {
              console.log('error fetching pictures');
@@ -107,12 +79,10 @@ export class PicsDisplayComponent implements OnInit {
   getDisplayMessage(){
     this.subscription = this.galleryService.getDisplayMessage()
     .subscribe(message => {
-         //this.message = message;
          this.setList(message);
     });
   }
   setList(value){
-     //let myPics : Pics[] = [ ];
      let myPics1 : Picture[] = [ ];
      let myPics2 : Picture[] = [ ];
      let myPics3 : Picture[] = [ ];
@@ -124,20 +94,12 @@ export class PicsDisplayComponent implements OnInit {
        }
      else{
         if(value.style !== "0"){
-           //let n = value.style.indexOf(pic.style);
            let str:string ;
            let test:string = "" + value.style;
-           //console.log(value.style);
            test = value.style;
-           //console.log(test);
            for(let pic of this.allPics){
-              //if(pic.style === value.style){
               str = " " + pic.style;
-
-
-               //console.log(pic.style);
-               //console.log(pic.function);
-                if(str.indexOf(test) !== -1){
+              if(str.indexOf(test) !== -1){
                    myPics1.push(pic);
               }
            }
@@ -210,7 +172,6 @@ export class PicsDisplayComponent implements OnInit {
   setSelectedPics(pic){
     let index:number;
      this.selectedPics = pic;
-     //console.log(pic)
      this.myLikes = this.selectedPics.likes;
      this.likes =  ' ' + this.myLikes;
 
@@ -244,13 +205,11 @@ export class PicsDisplayComponent implements OnInit {
     index = this.picsList.indexOf(this.selectedPics);
     if(this.likesArr[pics.id] === false){
        this.likeImage = "like2.png";
-       //index = this.picsList.indexOf(this.selectedPics);
        ++this.picsList[index].likes;
        this.likes =  ' ' + this.selectedPics.likes ;
        this.likesArr[pics.id] = true;
     }else{
        this.likeImage = "like1.png";
-       //index = this.picsList.indexOf(this.selectedPics);
        --this.picsList[index].likes;
        this.likes =  ' ' + this.selectedPics.likes;
        this.likesArr[pics.id] = false;
@@ -296,20 +255,7 @@ export class PicsDisplayComponent implements OnInit {
     this.likes =  ' ' + this.selectedPics.likes ;
   }
   slidePlay(){
-    //console.log(tempPicture);
-    //let all: Pics[];
-    for(let pic of this.all){
-       //let pic = this.allPics[5];
-
-        console.log(pic);
-       this.galleryService.addPicture(pic)
-        .subscribe(
-            data => console.log(data),
-            error => console.error(error)
-        );
-      }
-
-     if(this.playPauseImage ==="play.png"){
+    if(this.playPauseImage ==="play.png"){
           this.playPauseImage = "pause.png"
           this.timerId = setInterval(()=> {
           this.onNext(); }, 1000)
