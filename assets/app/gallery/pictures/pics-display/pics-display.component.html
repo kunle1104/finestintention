@@ -1,9 +1,11 @@
 <div class="row main-row">
-  <div class="list col-md-4 col-sm-3 col-xs-2">
+<!--<div class="main-row">-->
+  <div class="list col-md-4 col-sm-3 col-xs-2" (scroll)="scroller($event)" #list>
+  <!--<div class="list">-->
      <div *ngIf="picsList === undefined || picsList.length === 0">
        {{errMessage}}
      </div>
-    <div *ngIf="picsList != undefined">
+    <div *ngIf="picsList != undefined" >
         <a *ngFor="let pics of picsList" (click)="setSelectedPics(pics)">
            <img [src]="'/assets/gallery/' + pics.path" class="img-fluid img-thumbnail mt-1"
            [style.border]="pics == selectedPics ? '2px solid red': '1px solid white' " />
@@ -11,9 +13,12 @@
    </div>
   </div>
   <div class="item col-md-8 col-sm-9 col-xs-10">
+  <!--<div class="item">-->
        <div class="display-image">
-          <img [src]= "'/assets/gallery/' + selectedPics.path"
+          <div class="main-pix" (swipeleft)="onBack()" (swiperight)="onNext()">
+            <img [src]= "'/assets/gallery/' + selectedPics.path"
                 class="img-fluid img-responsive img-thumbnail mt-1"/>
+          </div>
           <p class="source">Source: <span>{{source}} </span></p>
 
           <img [src]="'/assets/images/' + playPauseImage" class="img-fluid play" (click)="slidePlay()"/>

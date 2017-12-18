@@ -1,6 +1,6 @@
 
 .main-row {
-  margin: 0 0 5px 10px;
+  margin: 0 0 5px 5px;
 
 }
 .back {
@@ -41,32 +41,45 @@
 
 }
 .list{
+    /*display:block;*/
+    overflow: auto;
+    white-space: nowrap;
     background-color: grey;/*#B3DBC0;*/
-    width: 20%;
-    height:350px;
-    overflow: scroll;
+    width: 100%;
+    height:75px;
+
 		border-radius:3px;
 		margin-top: 5px;
+    margin-bottom:5px;
+    padding:0;
+}
+.list img{
+  display: inline-block;
+  width:60px;
+  margin: 0;
+  height:75px;
 }
 .item{
-   width:70%;
-   height:320px;
+
+   width:100%;
+   height:400px;
 
 }
 .display-image{
   position: relative;
 	 width:100%;
    height: 90%;
-   padding: 0 5px;
+   padding: 0 ;
    margin: 0 auto;
 }
-.display-image img{
+.main-pix img{
   /*position: relative;*/
   /*position: absolute;*/
-   max-width:100%;
-   max-height: 100%;
-   margin: auto;
+   width:auto;
+   max-height:400px;
+   margin: auto ;
    display:block;
+   /*overflow: hidden;*/
 
 }
 .control{
@@ -128,14 +141,32 @@ a:active{
 .control img {
   /*position: relative;
  /* margin: 5px 10px 0 0;*/
-  width:21px;
-  height:21px;
+  width:28px;
+  height:28px;
 }
 @media (min-width: 576px) {
+  .list{
+      /*display:block;*/
+      background-color: grey;/*#B3DBC0;*/
+      width: 20%;
+      height:400px;
+      overflow: scroll;
+  		border-radius:3px;
+  		margin-top: 5px;
+      padding: 1% 2%;
+  }
+  /*.item{
+     display:block;
+     width:70%;
+     height:320px;
+
+  }*/
   .list img{
     display:block;
     width:90%;
+    height:auto;
     margin: 0 auto;
+
   }
   .control{
    width:90%;
@@ -144,8 +175,8 @@ a:active{
   .control img {
     /*position: relative;
    /* margin: 5px 10px 0 0;*/
-    width:24px;
-    height:24px;
+    width:32px;
+    height:32px;
   }
   .backP, .nextP, .commentP{
      position: relative;
@@ -169,8 +200,8 @@ a:active{
    .control img {
      /*position: relative;
     /* margin: 5px 10px 0 0;*/
-     width:28px;
-     height:28px;
+     width:32px;
+     height:32px;
    }
  }
 
