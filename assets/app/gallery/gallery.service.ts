@@ -20,8 +20,11 @@ import { Video1 } from './videos/video.model';
 export class GalleryService {
   allPictures: Pics[];
   searchList: Pics[];
+
   allAlbums: Album1[];
+
   allVideos: Video[];
+
   headers = new Headers({'Content-Type': 'application/json'});
 
   private subject = new Subject<any>();
@@ -33,14 +36,14 @@ export class GalleryService {
   addPicture(picture: Picture) {
       const body = JSON.stringify(picture);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post('https://178.62.41.39:3000/pictures', body, {headers: headers})
+      return this.http.post('https://finestintention.com/pictures', body, {headers: headers})
           .map((response: Response) => {
               return response.json();
           })
           .catch((error: Response) => Observable.throw(error.json()));
   }
   getPictures() {
-      return this.http.get('https://178.62.41.39:3000/pictures')
+      return this.http.get('https://finestintention.com/pictures')
           .map((response: Response) => {
               const pictures = response.json().obj;
               let transformedPictures: Picture[] = [];
@@ -58,7 +61,7 @@ export class GalleryService {
   updatePicture(picture:Picture){
     const body = JSON.stringify(picture);
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.patch('https://178.62.41.39:3000/pictures' + picture.id, body, {headers: headers})
+    return this.http.patch('https://finestintention.com/pictures/' + picture.id, body, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -73,14 +76,20 @@ export class GalleryService {
   addAlbum(album: Album) {
       const body = JSON.stringify(album);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post('https://178.62.41.39:3000/albums', body, {headers: headers})
+      return this.http.post('https://finestintention.com/albums', body, {headers: headers})
           .map((response: Response) => {
               return response.json();
           })
           .catch((error: Response) => Observable.throw(error.json()));
   }
+  /*getAllAlbums(): Observable<Album[]> {
+    const url = `${this.baseUrl}/albums`;
+    return this.http.get(url)
+      .map(response => response.json() as Album[]);
+
+  }*/
   getAlbums() {
-      return this.http.get('https://178.62.41.39:3000/albums')
+      return this.http.get('https://finestintention.com/albums')
           .map((response: Response) => {
               const albums = response.json().obj;
               let transformedAlbums: Album1[] = [];
@@ -97,7 +106,7 @@ export class GalleryService {
   updateAlbum(album:Album1){
     const body = JSON.stringify(album);
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.patch('https://178.62.41.39:3000/albums/' + album.id, body, {headers: headers})
+    return this.http.patch('https://finestintention.com/albums/' + album.id, body, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: Response) => Observable.throw(error.json()));
   }
@@ -111,14 +120,19 @@ export class GalleryService {
   addVideo(video: Video) {
       const body = JSON.stringify(video);
       const headers = new Headers({'Content-Type': 'application/json'});
-      return this.http.post('https://178.62.41.39:3000/videos', body, {headers: headers})
+      return this.http.post('https://finestintention.com/videos', body, {headers: headers})
           .map((response: Response) => {
               return response.json();
           })
           .catch((error: Response) => Observable.throw(error.json()));
   }
+  /*getAllVideos(): Observable<Video[]> {
+    const url = `${this.baseUrl}/videos`;
+    return this.http.get(url)
+      .map(response => response.json() as Video[]);
+  }*/
   getVideos() {
-      return this.http.get('https://178.62.41.39:3000/videos')
+      return this.http.get('https://finestintention.com/videos')
           .map((response: Response) => {
               const videos = response.json().obj;
               let transformedVideos: Video1[] = [];
@@ -136,7 +150,7 @@ export class GalleryService {
     const body = JSON.stringify(video);
     //console.log(video);
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.patch('https://178.62.41.39:3000/videos' + video.id, body, {headers: headers})
+    return this.http.patch('https://finestintention.com/videos/' + video.id, body, {headers: headers})
         .map((response: Response) => response.json())
         .catch((error: Response) => Observable.throw(error.json()));
   }
