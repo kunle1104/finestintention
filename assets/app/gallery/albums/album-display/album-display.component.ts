@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild ,ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import {Album} from '../album';
 import {Album1} from '../album.model';
 import {GalleryService} from '../../gallery.service';
 
@@ -10,6 +9,8 @@ import {GalleryService} from '../../gallery.service';
   styleUrls: ['./album-display.component.css']
 })
 export class AlbumDisplayComponent implements OnInit {
+  @ViewChild('list') list: ElementRef;
+
   nextPicture:number = 0;
   backPicture:number = 0;
 
@@ -29,7 +30,7 @@ export class AlbumDisplayComponent implements OnInit {
   playPauseImage:string ="play.png";
   likeImage:string = "like1.png";
 
-  all:Album[] = [];
+  //all:Album[] = [];
   allAlbums : Album1[] = [];
   albumList: Album1[] = [];
   selectedAlbum: Album1 = {
@@ -55,16 +56,14 @@ export class AlbumDisplayComponent implements OnInit {
   displayMessage: any;
   subscription: Subscription;
 
-  baseUrl: string = 'http://localhost:4568';
-
-  headers = new Headers({'Content-Type': 'application/json'});
+  winWidth:number = 0;
 
   constructor(private galleryService: GalleryService) { }
 
   ngOnInit() {
      this.getAlbums();
      this.getAlbumDisplayMessage();
-     this.getMyAlbums();
+     //this.getMyAlbums();
   }
   ngOnDestroy() {
     for(let album of this.allAlbums){
@@ -78,7 +77,7 @@ export class AlbumDisplayComponent implements OnInit {
     }
     this.subscription.unsubscribe();
 }
-getMyAlbums(){
+/*getMyAlbums(){
   this.galleryService.getAllAlbums()
     .subscribe(
         albums => {
@@ -89,7 +88,7 @@ getMyAlbums(){
            this.errMessage ='Error Fetching Pictures, Please Search Again';
         }
      );
-}
+}*/
 
   getAlbums(){
     this.galleryService.getAlbums()
@@ -245,17 +244,33 @@ getMyAlbums(){
   }
   onBackAlbum(){
     let index:number;
+    let offset:number = 0;
     if(this.backAlbum > 0 && this.backAlbum <= this.albumList.length-1){
       ++this.nextAlbum;
       --this.backAlbum;
       index = this.albumList.indexOf(this.selectedAlbum);
       this.selectedAlbum = this.albumList[--index];
       this.initPicsControl();
+      if(this.winWidth < 576){
+         offset = index * 60 + (index * 4);
+         this.list.nativeElement.scrollTo(offset,0);
+      }else{
+        offset = index * 100 + (index * 4);
+        this.list.nativeElement.scrollTo(0,offset);
+      }
     }else{
       this.nextAlbum = 0;
       this.backAlbum = this.albumList.length-1;
       this.selectedAlbum = this.albumList[this.albumList.length-1];
       this.initPicsControl();
+      index = this.albumList.length-1;;
+      if(this.winWidth < 576){
+         offset = index * 60 + (index * 4);
+         this.list.nativeElement.scrollTo(offset,0);
+      }else{
+        offset = index * 100 + (index * 4);
+        this.list.nativeElement.scrollTo(0,offset);
+      }
     }
     if(this.likesArr[this.selectedAlbum.id]){
        this.likeImage = "like2.png";
@@ -267,17 +282,33 @@ getMyAlbums(){
   }
   onNextAlbum(){
     let index:number;
+    let offset:number = 0;
     if(this.nextAlbum <= this.albumList.length-1 && this.nextAlbum > 0){
       --this.nextAlbum;
       ++this.backAlbum;
       index = this.albumList.indexOf(this.selectedAlbum);
       this.selectedAlbum = this.albumList[++index];
       this.initPicsControl();
+      if(this.winWidth < 576){
+        offset = index * 60 + (index * 4);
+        this.list.nativeElement.scrollTo(offset,0);
+      }else{
+        offset = index * 100 + (index * 4);
+        this.list.nativeElement.scrollTo(0,offset);
+      }
     }else{
       this.nextAlbum = this.albumList.length-1;
       this.backAlbum = 0;
       this.selectedAlbum = this.albumList[0];
       this.initPicsControl();
+      index = 0;
+      if(this.winWidth < 576){
+        offset = index * 60 + (index * 4);
+        this.list.nativeElement.scrollTo(offset,0);
+      }else{
+        offset = index * 100 + (index * 4);
+        this.list.nativeElement.scrollTo(0,offset);
+      }
     }
     if(this.likesArr[this.selectedAlbum.id]){
        this.likeImage = "like2.png";
@@ -315,7 +346,7 @@ getMyAlbums(){
   }
   slidePlay(){
 
-     for(let album of this.all){
+     /*for(let album of this.all){
        console.log(album);
         this.galleryService.addAlbum(album)
         .subscribe(
@@ -323,7 +354,7 @@ getMyAlbums(){
             error => console.error(error)
 
         );
-     }
+     }*/
      if(this.playPauseImage ==="play.png"){
           this.playPauseImage = "pause.png"
           this.timerId = setInterval(()=> {
@@ -333,5 +364,7 @@ getMyAlbums(){
           clearInterval(this.timerId)
        }
   }
-
+  setScreen(event){
+      this.winWidth = window.outerWidth;
+  }
 }

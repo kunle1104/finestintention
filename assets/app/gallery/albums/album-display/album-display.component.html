@@ -1,5 +1,5 @@
-<div class="row main-row">
-    <div class="list col-md-4 col-sm-3 col-xs-2">
+<div class="row main-row" (window:load) = "setScreen($event)" (window:resize) = "setScreen($event)">
+    <div class="list col-md-4 col-sm-3 col-xs-2" #list>
        <div *ngIf="albumList === undefined || albumList.length === 0">
          {{errMessage}}
        </div>
@@ -13,10 +13,10 @@
     </div>
     <div class="item col-md-8 col-sm-9 col-xs-10">
          <div class="display-image">
-            <!--<img [src]= "'/assets/gallery/' + selectedPics.path"
-                  class="img-fluid img-responsive img-thumbnail mt-1"/>-->
-            <img [src]= "'../../assets/albums/'+ selectedAlbum.name + '/' + selectedPicsPath"
+            <div class="main-pix" (swipeleft)="onBackPicture()" (swiperight)="onNextPicture()">
+               <img [src]= "'../../assets/albums/'+ selectedAlbum.name + '/' + selectedPicsPath"
                   class="img-fluid img-responsive img-thumbnail mt-1"/>
+            </div>
             <p class="source">Source: <span>{{source}} </span></p>
 
             <img [src]="'/assets/images/' + playPauseImage" class="img-fluid play" (click)="slidePlay()"/>

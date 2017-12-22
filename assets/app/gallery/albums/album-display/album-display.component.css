@@ -30,35 +30,45 @@
 
 }
 .list{
-	  position: relative;
-	  background-color: grey;/*#B3DBC0;*/
-    width: 20%;
-    height:350px;
-    overflow: scroll;
+	  overflow: auto;
+    white-space: nowrap;
+    background-color: grey;/*#B3DBC0;*/
+    width: 100%;
+    height:75px;
+
 		border-radius:3px;
 		margin-top: 5px;
+    margin-bottom:5px;
+    padding:0;
+}
+.list img{
+  display: inline-block;
+  width:60px;
+  margin: 0;
+  height:75px;
 }
 .item{
-   width:70%;
-   height:320px;
-
+  width:100%;
+  height:400px;
 }
 .display-image{
   position: relative;
 	 width:100%;
    height: 90%;
-   padding: 0 5px;
+   padding: 0 ;
    margin: 0 auto;
 }
-.display-image img{
+.main-pix img{
   /*position: relative;*/
   /*position: absolute;*/
-   max-width:100%;
-   max-height: 100%;
-   margin: auto;
+   width:auto;
+   max-height:400px;
+   margin: auto ;
    display:block;
+   /*overflow: hidden;*/
 
 }
+
 .control{
   position: relative;
   height: 10%;
@@ -116,12 +126,10 @@ a:active{
    display:inline-block;
 }
 .control img {
-  width:21px;
-  height:21px;
+  width:28px;
+  height:28px;
 }
-.list img {
-	  /*position:relative;*/
-}
+
 .list p {
 	position: absolute;
 	color:#FE0000;
@@ -129,18 +137,30 @@ a:active{
 	margin-left:40%;
 }
 @media (min-width: 576px) {
+  .list{
+      /*display:block;*/
+      background-color: grey;/*#B3DBC0;*/
+      width: 20%;
+      height:400px;
+      overflow: scroll;
+  		border-radius:3px;
+  		margin-top: 5px;
+      padding: 1% 2%;
+  }
   .list img{
     display:block;
-    width:90%;
+    width:82px;
+    height:100px;
     margin: 0 auto;
+
   }
   .control{
    width:90%;
 
   }
   .control img {
-    width:24px;
-    height:24px;
+    width:32px;
+    height:32px;
   }
   .backP, .nextP, .commentP{
      position: relative;
@@ -150,17 +170,17 @@ a:active{
 }
  /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  .list img{
+  /*.list img{
     display:block;
     width:85%;
     margin: 0 auto;
-  }
+  }*/
   .control{
      width:90%;
    }
    .control img {
-     width:28px;
-     height:28px;
+     width:32px;
+     height:32px;
    }
    .display-image .source{
        bottom:4.5%;
@@ -178,11 +198,11 @@ a:active{
       height:520px;
       overflow: scroll;
   }
-  .list img{
+  /*.list img{
     display:block;
     width:60%;
     margin: 0 auto;
-  }
+  }*/
   .item{
 
      height:520px;
@@ -215,11 +235,11 @@ a:active{
      height:500px;
 
   }
-  .list img{
+  /*.list img{
     display:block;
     width:50%;
     margin: 0 auto;
-  }
+  }*/
   .control{
      /*width:75%;*/
 
