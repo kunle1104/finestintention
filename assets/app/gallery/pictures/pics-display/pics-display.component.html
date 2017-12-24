@@ -1,6 +1,6 @@
-<div class="row main-row">
+<div class="row main-row" (window:load) = "setScreen($event)" (window:resize) = "setScreen($event)">
 <!--<div class="main-row">-->
-  <div class="list col-md-4 col-sm-3 col-xs-2" (scroll)="scroller($event)" #list>
+  <div class="list col-md-4 col-sm-3 col-xs-2" #list>
   <!--<div class="list">-->
      <div *ngIf="picsList === undefined || picsList.length === 0">
        {{errMessage}}

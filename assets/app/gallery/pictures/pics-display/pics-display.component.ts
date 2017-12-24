@@ -46,6 +46,8 @@ export class PicsDisplayComponent implements OnInit {
 
   displayMessage: any;
   subscription: Subscription;
+  winWidth:number = 0;
+
 
   constructor(private galleryService: GalleryService, private renderer: Renderer2) { }
 
@@ -258,15 +260,31 @@ export class PicsDisplayComponent implements OnInit {
   }
   onBack(){
     let index:number;
+    let offset:number = 0;
     if(this.back > 0 && this.back <= this.picsList.length-1){
       ++this.next;
       --this.back;
       index = this.picsList.indexOf(this.selectedPics);
       this.selectedPics = this.picsList[--index];
+      if(this.winWidth < 576){
+         offset = index * 60 + (index * 4);
+         this.list.nativeElement.scrollTo(offset,0);
+      }else{
+        offset = index * 100 + (index * 4);
+        this.list.nativeElement.scrollTo(0,offset);
+      }
     }else{
       this.next = 0;
       this.back = this.picsList.length-1;
       this.selectedPics = this.picsList[this.picsList.length-1];
+      index = this.picsList.length-1;;
+      if(this.winWidth < 576){
+         offset = index * 60 + (index * 4);
+         this.list.nativeElement.scrollTo(offset,0);
+      }else{
+        offset = index * 100 + (index * 4);
+        this.list.nativeElement.scrollTo(0,offset);
+      }
     }
     if(this.likesArr[this.selectedPics.id]){
        this.likeImage = "like2.png";
@@ -277,15 +295,31 @@ export class PicsDisplayComponent implements OnInit {
   }
   onNext(){
     let index:number;
+    let offset:number = 0;
     if(this.next <= this.picsList.length-1 && this.next > 0){
       --this.next;
       ++this.back;
       index = this.picsList.indexOf(this.selectedPics);
       this.selectedPics = this.picsList[++index];
+      if(this.winWidth < 576){
+        offset = index * 60 + (index * 4);
+        this.list.nativeElement.scrollTo(offset,0);
+      }else{
+        offset = index * 100 + (index * 4);
+        this.list.nativeElement.scrollTo(0,offset);
+      }
     }else{
       this.next = this.picsList.length-1;
       this.back = 0;
       this.selectedPics = this.picsList[0];
+      index = 0;
+      if(this.winWidth < 576){
+        offset = index * 60 + (index * 4);
+        this.list.nativeElement.scrollTo(offset,0);
+      }else{
+        offset = index * 100 + (index * 4);
+        this.list.nativeElement.scrollTo(0,offset);
+      }
     }
     if(this.likesArr[this.selectedPics.id]){
        this.likeImage = "like2.png";
@@ -304,12 +338,8 @@ export class PicsDisplayComponent implements OnInit {
           clearInterval(this.timerId)
        }
   }
-  scroller(event){
-      //let scr :number = this.list.nativeElement.scrollLeft;
-      //console.log(scr);
-      //console.log('You scrolled');
-      //this.renderer.setValue(this.list.nativeElement.scrollTo, '250,0');
-      //this.list.nativeElement.scrollTo(250,0);
+  setScreen(event){
+      this.winWidth = window.outerWidth;
   }
 
 }
