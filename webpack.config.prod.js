@@ -4,6 +4,8 @@ var webpack = require('webpack');
 var webpackMerge = require('webpack-merge');
 var commonConfig = require('./webpack.config.common.js');
 
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
 module.exports = webpackMerge.smart(commonConfig, {
     entry: {
         'app': './assets/app/main.aot.ts'
@@ -28,10 +30,12 @@ module.exports = webpackMerge.smart(commonConfig, {
             }
         ]
     },
-
     plugins: [
+       new UglifyJSPlugin()
+    ]
+    /*plugins: [
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: false
         })
-    ]
+    ]*/
 });
