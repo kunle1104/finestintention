@@ -32,6 +32,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { TermsComponent } from './terms/terms.component';
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule    
   ],
   providers: [GalleryService],
   bootstrap: [AppComponent]
