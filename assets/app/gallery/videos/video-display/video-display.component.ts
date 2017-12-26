@@ -1,6 +1,5 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-//import {Video} from '../video';
 import {Video1} from '../video.model';
 import {GalleryService} from '../../gallery.service';
 
@@ -10,6 +9,7 @@ import {GalleryService} from '../../gallery.service';
   styleUrls: ['./video-display.component.css']
 })
 export class VideoDisplayComponent implements OnInit {
+  @ViewChild('list') list: ElementRef;
   back:number = 0;
   next:number = 0;
   myLikes:number = 0;
@@ -42,6 +42,8 @@ export class VideoDisplayComponent implements OnInit {
 
   displayMessage: any;
   subscription: Subscription;
+  winWidth:number = 0;
+
    constructor(private galleryService: GalleryService) { }
 
    ngOnInit() {
@@ -228,16 +230,33 @@ export class VideoDisplayComponent implements OnInit {
 
    }
    onBack(){
-     let index:number;
+     let index:number = 0;
+     let offset:number = 0;
+
      if(this.back > 0 && this.back <= this.videoList.length-1){
        ++this.next;
        --this.back;
        index = this.videoList.indexOf(this.selectedVideo);
        this.selectedVideo = this.videoList[--index];
+       if(this.winWidth < 576){
+          offset = index * 60 + (index * 4);
+          this.list.nativeElement.scrollTo(offset,0);
+       }else{
+         offset = index * 100 + (index * 4);
+         this.list.nativeElement.scrollTo(0,offset);
+       }
      }else{
        this.next = 0;
        this.back = this.videoList.length-1;
        this.selectedVideo = this.videoList[this.videoList.length-1];
+       index = this.videoList.length-1;;
+       if(this.winWidth < 576){
+          offset = index * 60 + (index * 4);
+          this.list.nativeElement.scrollTo(offset,0);
+       }else{
+         offset = index * 100 + (index * 4);
+         this.list.nativeElement.scrollTo(0,offset);
+       }
      }
      if(this.likesArr[this.selectedVideo.id]){
         this.likeImage = "like2.png";
@@ -248,15 +267,32 @@ export class VideoDisplayComponent implements OnInit {
    }
    onNext(){
      let index:number;
+     let offset:number = 0;
+
      if(this.next <= this.videoList.length-1 && this.next > 0){
        --this.next;
        ++this.back;
        index = this.videoList.indexOf(this.selectedVideo);
        this.selectedVideo = this.videoList[++index];
+       if(this.winWidth < 576){
+         offset = index * 60 + (index * 4);
+         this.list.nativeElement.scrollTo(offset,0);
+       }else{
+         offset = index * 100 + (index * 4);
+         this.list.nativeElement.scrollTo(0,offset);
+       }
      }else{
        this.next = this.videoList.length-1;
        this.back = 0;
        this.selectedVideo = this.videoList[0];
+       index = 0;
+       if(this.winWidth < 576){
+         offset = index * 60 + (index * 4);
+         this.list.nativeElement.scrollTo(offset,0);
+       }else{
+         offset = index * 100 + (index * 4);
+         this.list.nativeElement.scrollTo(0,offset);
+       }
      }
      if(this.likesArr[this.selectedVideo.id]){
         this.likeImage = "like2.png";
@@ -276,5 +312,8 @@ export class VideoDisplayComponent implements OnInit {
         );
      }*/
 
+   }
+   setScreen(event){
+       this.winWidth = window.outerWidth;
    }
 }

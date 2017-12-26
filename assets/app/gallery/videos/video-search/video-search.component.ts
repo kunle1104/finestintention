@@ -59,11 +59,11 @@ export class VideoSearchComponent implements OnInit {
   onSubmit(formValue){
      //console.log(formValue);
     // console.log(this.search.value)
-     let submit = Object.assign({}, formValue );
+     let submit = (<any>Object).assign({}, formValue );
      let value = this.convertValues(submit);
      //this.galleryService.newPictureSearch(formValue);
      //console.log(value);
-     this.galleryService.sendVideoDisplayMessage(Object.assign({}, value));
+     this.galleryService.sendVideoDisplayMessage((<any>Object).assign({}, value));
 
   }
 

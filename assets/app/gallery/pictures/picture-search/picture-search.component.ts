@@ -124,11 +124,11 @@ export class PictureSearchComponent implements OnInit {
   onSubmit(formValue){
      //console.log(formValue);
      //console.log(this.searchForm.value)
-     let submit = Object.assign({}, formValue );
+     let submit = (<any>Object).assign({}, formValue );
      let value = this.convertValues(submit);
      //this.galleryService.newPictureSearch(formValue);
      //console.log(value);
-     this.galleryService.sendDisplayMessage(Object.assign({}, value ));
+     this.galleryService.sendDisplayMessage((<any>Object).assign({}, value ));
 
   }
 
