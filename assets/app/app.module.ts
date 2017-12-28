@@ -34,6 +34,8 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
 import 'hammerjs';
 
+Hammer.defaults.touchAction = 'pan-y';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,9 +69,12 @@ import 'hammerjs';
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpModule    
+    HttpModule
   ],
   providers: [GalleryService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+
+}
