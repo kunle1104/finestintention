@@ -17,8 +17,7 @@ router.get('/', function (req, res, next) {
                  message : 'Success',
                  obj: videos
               });
-
-          });
+      });
 });
 
 router.post('/', function (req, res, next) {
@@ -34,18 +33,15 @@ router.post('/', function (req, res, next) {
      description: req.body.description,
      likes:req.body.likes,
      source: req.body.source
-     //uploadedDate:req.body.uploadedDate
-   });
+  });
    console.log(video);
    video.save(function(err, result){
       if(err){
-             console.log("8*************8");
-           return res.status(500).json({
+          return res.status(500).json({
               title: 'An error occured',
               err : err
            });
         }
-        console.log("6^^^^^^^^^^^6");
         res.status(201).json({
            message : 'Message saved',
            obj: result
@@ -69,13 +65,11 @@ router.patch('/:id', function (req, res, next) {
         video.likes = req.body.likes;
         video.save(function(err, result) {
             if(err){
-                   //console.log("8*************8");
-                 return res.status(500).json({
+                return res.status(500).json({
                     title: 'An error occured',
                     err : err
                  });
               }
-              //console.log("6^^^^^^^^^^^6");
               res.status(201).json({
                  message : 'Message saved',
                  obj: result

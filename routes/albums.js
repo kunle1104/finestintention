@@ -21,8 +21,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-   //console.log('In the album server');
-   //console.log(req.body);
    var album = new Album ({
      albumId:req.body.id,
      name: req.body.name,
@@ -33,18 +31,15 @@ router.post('/', function (req, res, next) {
      description: req.body.description,
      likes:req.body.likes,
      source: req.body.source,
-     //uploadedDate:req.body.uploadedDate
-   });
+ });
    console.log(album);
    album.save(function(err, result){
       if(err){
-             console.log("8*************8");
-           return res.status(500).json({
+          return res.status(500).json({
               title: 'An error occured',
               err : err
            });
         }
-        console.log("6^^^^^^^^^^^6");
         res.status(201).json({
            message : 'Message saved',
            obj: result
@@ -68,13 +63,11 @@ router.patch('/:id', function (req, res, next) {
         album.likes = req.body.likes;
         album.save(function(err, result) {
             if(err){
-                   //console.log("8*************8");
-                 return res.status(500).json({
+                return res.status(500).json({
                     title: 'An error occured',
                     err : err
                  });
               }
-              //console.log("6^^^^^^^^^^^6");
               res.status(201).json({
                  message : 'Message saved',
                  obj: result

@@ -21,9 +21,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-   //console.log('In the server');
-   //console.log(req.body);
-   var picture = new Picture ({
+     var picture = new Picture ({
      picsId:req.body.id,
      path: req.body.path,
      primaryColor: req.body.primaryColor,
@@ -34,18 +32,14 @@ router.post('/', function (req, res, next) {
      fiFunction: req.body.function,
      description: req.body.desc,
      likes:req.body.likes,
-     //uploadedDate:req.body.uploadedDate
-   });
-   //console.log(picture);
+  });
    picture.save(function(err, result){
       if(err){
-             //console.log("8*************8");
-           return res.status(500).json({
+          return res.status(500).json({
               title: 'An error occured',
               err : err
            });
         }
-        //console.log("6^^^^^^^^^^^6");
         res.status(201).json({
            message : 'Message saved',
            obj: result
@@ -69,13 +63,11 @@ router.patch('/:id', function (req, res, next) {
         picture.likes = req.body.likes;
         picture.save(function(err, result) {
             if(err){
-                   //console.log("8*************8");
-                 return res.status(500).json({
+                return res.status(500).json({
                     title: 'An error occured',
                     err : err
                  });
               }
-              //console.log("6^^^^^^^^^^^6");
               res.status(201).json({
                  message : 'Message saved',
                  obj: result
