@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./videos.component.css']
 })
 export class VideosComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

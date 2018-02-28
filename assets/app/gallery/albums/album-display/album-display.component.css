@@ -1,25 +1,17 @@
-
 .main-row {
   margin: 0 0 5px 10px;
-
 }
-
 .backP{
    position: relative;
    margin-right: 10px;
-
 }
-
 .likesP{
    float: right;
    margin: 0 auto;
-
 }
-
 .nextP{
   position:relative;
   margin-right: 0px;
-
 }
 .comment{
 
@@ -27,7 +19,6 @@
 .commentP{
    position: relative;
    margin-right: 0px;
-
 }
 .list{
 	  overflow: auto;
@@ -35,8 +26,7 @@
     background-color: grey;/*#B3DBC0;*/
     width: 100%;
     height:75px;
-
-		border-radius:3px;
+    border-radius:3px;
 		margin-top: 5px;
     margin-bottom:5px;
     padding:0;
@@ -59,47 +49,36 @@
    margin: 0 auto;
 }
 .main-pix img{
-  /*position: relative;*/
-  /*position: absolute;*/
    width:auto;
    max-height:400px;
    margin: auto ;
    display:block;
-   /*overflow: hidden;*/
-
 }
-
 .control{
   position: relative;
   height: 10%;
   width:100%;
   margin:5px auto;
-
-	color:#FE0000;
+  color:#FE0000;
 }
-
 a:hover{
    color:hotpink;
 }
 a:active{
   color:green;
 }
-
 .commentP img{
    left:0px;
 }
 .control button {
   margin-right: 2px;
 }
-
 .item-btn{
    background-color: #B3DBC0;
    display:inline-block;
 }
 .display-image .play{
   position: absolute;
-   /*top:-35px;*/
-
 }
 .display-image .back{
     position: absolute;
@@ -129,7 +108,6 @@ a:active{
   width:28px;
   height:28px;
 }
-
 .list p {
 	position: absolute;
 	color:#FE0000;
@@ -138,8 +116,7 @@ a:active{
 }
 @media (min-width: 576px) {
   .list{
-      /*display:block;*/
-      background-color: grey;/*#B3DBC0;*/
+      background-color: grey;
       width: 20%;
       height:400px;
       overflow: scroll;
@@ -147,17 +124,17 @@ a:active{
   		margin-top: 5px;
       padding: 1% 2%;
   }
-  .list img{
-    display:block;
-    width:82px;
-    height:100px;
-    margin: 0 auto;
 
-  }
+  .list img{
+       display:block;
+       width:90%;
+       height:120px;
+       margin: 0 auto;
+ }
+
   .control{
    width:90%;
-
-  }
+}
   .control img {
     width:32px;
     height:32px;
@@ -165,17 +142,14 @@ a:active{
   .backP, .nextP, .commentP{
      position: relative;
      margin-right: 10px;
-
-  }
+ }
 }
  /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  /*.list img{
-    display:block;
+  .list img{
     width:85%;
-    margin: 0 auto;
-  }*/
-  .control{
+  }
+   .control{
      width:90%;
    }
    .control img {
@@ -192,67 +166,41 @@ a:active{
   .row{
 		padding: 5px;
 	}
+  .list img{
+    width:60%;
+  }
   .list{
-
-      /*width:40%;*/
       height:520px;
       overflow: scroll;
   }
-  /*.list img{
-    display:block;
-    width:60%;
-    margin: 0 auto;
-  }*/
   .item{
-
-     height:520px;
-     /*margin: 0 auto;*/
+      height:520px;
   }
   .control{
      width:80%;
-   }
-   .control img {
-     /*position: relative;
-    /* margin: 5px 10px 0 0;*/
+  }
+  .control img {
      width:32px;
      height:32px;
    }
-
 }
-
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
   .list{
-
-      /*width:40%;*/
-
       width: 20%;
       height:500px;
       overflow: scroll;
   }
+  .list img{
+    width:50%;
+  }
   .item{
      width:100%;
      height:500px;
-
   }
-  /*.list img{
-    display:block;
-    width:50%;
-    margin: 0 auto;
-  }*/
-  .control{
-     /*width:75%;*/
-
-
-   }
-   .control img {
-     /*position: relative;
-    /* margin: 5px 10px 0 0;*/
+  .control img {
      width:32px;
      height:32px;
      text-decoration:
-
    }
-
-
 }

@@ -1,0 +1,4 @@
+<div class="subMenu pl-2" >
+  <a *ngFor = "let subMenu of subMenuList" [routerLink]="['/gallery', subMenu]"
+  routerLinkActive="router-link-active">{{subMenu}}</a>
+</div>

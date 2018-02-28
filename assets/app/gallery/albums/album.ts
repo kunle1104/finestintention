@@ -1,5 +1,3 @@
-
-
 enum FunctionType{
   wedding = 1,
   naming = 2,

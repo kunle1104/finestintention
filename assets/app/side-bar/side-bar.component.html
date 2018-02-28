@@ -1,4 +1,4 @@
-<div id="picSearch" class="pt-2" (window:resize)="myWindowHandler($event)">
+<div id="picSearch" class="pt-2" (window:resize)="myWindowHandler()">
    <p id="open" (click)="onClickOpen()" [ngStyle]="{'background-image': getBg()}">Search {{selectedComponent}}</p>
    <div class="main" [ngStyle]="{display:getDisplay()}" >
      <div *ngIf="selectedComponent ==='pictures'">

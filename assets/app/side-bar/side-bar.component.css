@@ -14,12 +14,14 @@
 
 .close {
 	background-image: url(../../assets/images/close.png);
-	background-color: rgb(110,138,195);
+	/*background-color: rgb(110,138,195);*/
+
+  background-color: #B3DBC0;
 }
 
 #open:hover {
+	background-color:  #B3DBC0;/*rgb(110,138,195);*/
 	color: rgb(0,0,0);
-	background-color: rgb(110,138,195);
 }
 @media (min-width: 576px) { }
 

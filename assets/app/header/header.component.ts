@@ -10,6 +10,8 @@ export class HeaderComponent implements OnInit {
   @ViewChild('sticky') sticky: ElementRef;
   addStickyClass:boolean = false;
   isReady: boolean = true;
+  isIn = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -18,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   myScrollHandler(){
 
-    let window_top:number = window.pageYOffset ;
+    /*let window_top:number = window.pageYOffset ;
     let div_top = this.sticky.nativeElement.offsetTop;
 
     if (window_top > div_top) {
@@ -28,6 +30,10 @@ export class HeaderComponent implements OnInit {
     } else {
         this.addStickyClass = false;
         //this.stickyAnchor.nativeElement.height = 0;
-    }
+    }*/
+  }
+  toggleState() { // click handler
+        let bool = this.isIn;
+        this.isIn = bool === false ? true : false;
   }
 }

@@ -10,27 +10,19 @@ import {GalleryService} from '../../gallery.service';
 })
 export class AlbumDisplayComponent implements OnInit {
   @ViewChild('list') list: ElementRef;
-
   nextPicture:number = 0;
   backPicture:number = 0;
-
   backAlbum:number = 0;
   nextAlbum:number = 0;
-
   myLikesPicture:number;
   likesPicture:string;
-
   myLikesAlbum:number;
   likesAlbum:string;
-
   source:string;
   liked:boolean = false;
-
   timerId: any;
   playPauseImage:string ="play.png";
   likeImage:string = "like1.png";
-
-  //all:Album[] = [];
   allAlbums : Album1[] = [];
   albumList: Album1[] = [];
   selectedAlbum: Album1 = {
@@ -45,52 +37,32 @@ export class AlbumDisplayComponent implements OnInit {
     "source": 1,
     "uploadedDate": new Date()
   };
-
   selectedPicsCounter:number = 1;
   selectedPicsPath:string = 'img' + this.selectedPicsCounter + '.jpg';
-
   likesArr:any[] = [];
-
   errMessage : string = 'Loding Albums';
-
   displayMessage: any;
   subscription: Subscription;
-
   winWidth:number = 0;
 
   constructor(private galleryService: GalleryService) { }
-
   ngOnInit() {
+     this.setScreen(event);
      this.getAlbums();
      this.getAlbumDisplayMessage();
-     //this.getMyAlbums();
   }
   ngOnDestroy() {
     for(let album of this.allAlbums){
        if(this.likesArr[album.id] !== false){
-          //++album.likes;
           this.galleryService.updateAlbum(album)
              .subscribe(
                  result => console.log(result)
              );
-       }
+        }
     }
     this.subscription.unsubscribe();
 }
-/*getMyAlbums(){
-  this.galleryService.getAllAlbums()
-    .subscribe(
-        albums => {
-           this.all = albums;
-        },
-        error => {
-           console.log('error fetching pictures ******');
-           this.errMessage ='Error Fetching Pictures, Please Search Again';
-        }
-     );
-}*/
-
-  getAlbums(){
+getAlbums(){
     this.galleryService.getAlbums()
       .subscribe(
           albums => {
@@ -255,7 +227,7 @@ export class AlbumDisplayComponent implements OnInit {
          offset = index * 60 + (index * 4);
          this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 100 + (index * 4);
+        offset = index * 120 + (index * 4);
         this.list.nativeElement.scrollTo(0,offset);
       }
     }else{
@@ -268,7 +240,7 @@ export class AlbumDisplayComponent implements OnInit {
          offset = index * 60 + (index * 4);
          this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 100 + (index * 4);
+        offset = index * 120 + (index * 4);
         this.list.nativeElement.scrollTo(0,offset);
       }
     }
@@ -293,7 +265,7 @@ export class AlbumDisplayComponent implements OnInit {
         offset = index * 60 + (index * 4);
         this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 100 + (index * 4);
+        offset = index * 120 + (index * 4);
         this.list.nativeElement.scrollTo(0,offset);
       }
     }else{
@@ -306,7 +278,7 @@ export class AlbumDisplayComponent implements OnInit {
         offset = index * 60 + (index * 4);
         this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 100 + (index * 4);
+        offset = index * 120 + (index * 4);
         this.list.nativeElement.scrollTo(0,offset);
       }
     }
@@ -345,17 +317,7 @@ export class AlbumDisplayComponent implements OnInit {
     }
   }
   slidePlay(){
-
-     /*for(let album of this.all){
-       console.log(album);
-        this.galleryService.addAlbum(album)
-        .subscribe(
-            data => console.log(data),
-            error => console.error(error)
-
-        );
-     }*/
-     if(this.playPauseImage ==="play.png"){
+    if(this.playPauseImage ==="play.png"){
           this.playPauseImage = "pause.png"
           this.timerId = setInterval(()=> {
           this.onNextPicture(); }, 1000)

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -8,10 +8,10 @@ import { Router } from '@angular/router';
 })
 export class GalleryComponent implements OnInit {
   galleryMenu : string[] = ['pictures', 'albums', 'videos' ];
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route:ActivatedRoute) { }
 
   ngOnInit() {
-     this.router.navigate(['gallery/pictures']);
+    
   }
 
 }

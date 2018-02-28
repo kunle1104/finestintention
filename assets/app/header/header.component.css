@@ -1,37 +1,25 @@
 
-.row{
-
-   /*background-color: #B3DBC0;*/
-
+.in{
+    display:block;
 }
-/*.facebook{
-   width:10%;
-   float: right;
-   margin:2%;
-}
-.register{
-   float: right;
-}*/
-
 .navbar{
-  background-color: #B3DBC0;
-   /*width:80%;
-   margin: 0 auto;
-   border-radius: 5px;
-   clear:both;*/
+  background-color:white; /*#FDF6F6;*/
+  border: 2px solid #67BACA;
 }
-.navbar a{
-   color: #FFFFFF;
+ .navbar a{
+   color: red;
+   padding: 10px 20px;
 }
 .navbar a:hover{
    color: blue;
-   /*transform:scale(1.2);*/
 }
-.navbar a:active{
-   color: wine;
+.router-link-active {
+   border-bottom: 2px solid #333;
+   color: #B3DBC0;
 }
 h4{
   color:blue;
+  font-family: 'Prosto One', cursive;
 }
 h4 span{
    color:red;
@@ -47,11 +35,11 @@ small{
   color:red;
 }
 .sticky {
+    border-radius: 0 0 0.5em 0.5em;
     margin-top: 0 !important;
     position: fixed;
     top: 0;
-    z-index: 10000;
-    border-radius: 0 0 0.5em 0.5em;
     width:100%;
     width:auto;
+    z-index: 10000;
 }

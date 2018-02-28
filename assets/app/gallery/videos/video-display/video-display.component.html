@@ -22,10 +22,8 @@
                  </video>
              </div>
           </div>
-          <!--<img [src]="'/assets/images/' + playPauseImage" class="img-fluid play" (click)="slidePlay()"/>-->
           <img src="/assets/images/back.png" class="img-fluid back"(click)="onBack()"/>
           <img src="/assets/images/next.png" class="img-fluid next"(click)="onNext()"/>
-
        </div>
        <div *ngIf="videoList.length !== 0" class="control">
          <p class="inlineElement backControl">
@@ -34,12 +32,10 @@
          <p class="inlineElement nextControl">
             <img src="/assets/images/next.png" class="img-fluid next"(click)="onNext()"/>{{next}}
          </p>
-
-           <p class=" likesP" >
+         <p class=" likesP" >
               <img  [src]="'/assets/images/' + likeImage" class="img-fluid likes"(click)="onLike(selectedVideo)"/>
               {{likes}}
-            </p>
-
-        </div>
+          </p>
+       </div>
     </div>
 </div>

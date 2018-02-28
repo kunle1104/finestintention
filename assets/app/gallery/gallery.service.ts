@@ -86,7 +86,6 @@ export class GalleryService {
     const url = `${this.baseUrl}/albums`;
     return this.http.get(url)
       .map(response => response.json() as Album[]);
-
   }*/
   getAlbums() {
       return this.http.get('https://finestintention.com/albums')

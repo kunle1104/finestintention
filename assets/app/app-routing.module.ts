@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {GalleryComponent} from './gallery/gallery.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {AdvertComponent} from './advert/advert.component';
 import {JoinInComponent} from './join-in/join-in.component';
 import {MarketComponent} from './market/market.component';
@@ -13,16 +14,13 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
 import {PrivacyComponent} from './privacy/privacy.component';
 import {TermsComponent} from './terms/terms.component';
 
-
-
 const appRoutes: Routes = [
 
-  {path: '', redirectTo: 'gallery', pathMatch: 'full'},
-
+  {path: '', redirectTo: 'gallery/pictures', pathMatch: 'full'},
   {path: 'gallery', component: GalleryComponent, children: [
       { path: 'pictures', component: PicturesComponent },
       { path: 'albums', component: AlbumsComponent },
-      { path: 'videos', component: VideosComponent }
+      { path: 'videos', component: VideosComponent },
     ]
   },
   {path: 'advert', component: AdvertComponent},
@@ -31,9 +29,10 @@ const appRoutes: Routes = [
   {path: 'about-us', component: AboutUsComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'privacy', component: PrivacyComponent},
-  {path: 'terms', component: TermsComponent}
+  {path: 'terms', component: TermsComponent},
+  { path: 'not-found', component: PageNotFoundComponent, data: {message: 'Page not found!'} },
+  { path: '**', redirectTo: '/not-found' }
 ];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes)

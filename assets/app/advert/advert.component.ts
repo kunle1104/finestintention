@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./advert.component.css']
 })
 export class AdvertComponent implements OnInit {
-
+  advertMenu : string[] = [];
   constructor() { }
 
   ngOnInit() {

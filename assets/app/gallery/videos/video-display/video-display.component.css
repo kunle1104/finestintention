@@ -1,54 +1,30 @@
 
 .main-row {
   margin: 0 0 5px 10px;
-
-}
-.back {
-	/*cursor: pointer;
-	background: url(../../../../assets/images/back.png) no-repeat 5px 5px;
-	color: red;
-  padding:10px 20px 10px 10px;*/
 }
 .backP{
    position: relative;
    margin-right: 10px;
-
 }
-
 .likesP{
    float: right;
    margin: 0 auto;
-
-}
-
-.next {
-	/*cursor: pointer;
-	background: url(../../../../assets/images/next.png) no-repeat 30px 5px;
-	color: red;
-  padding:10px 15px 10px 20px;*/
 }
 .nextP{
   position:relative;
   margin-right: 0px;
-
-}
-.comment{
-
 }
 .commentP{
    position: relative;
    margin-right: 0px;
-
 }
 .list{
-    /*display:block;*/
     overflow: auto;
     white-space: nowrap;
-    background-color: grey;/*#B3DBC0;*/
+    background-color: grey;
     width: 100%;
     height:75px;
-
-		border-radius:3px;
+    border-radius:3px;
 		margin-top: 5px;
     margin-bottom:5px;
     padding:0;
@@ -60,44 +36,30 @@
   height:75px;
 }
 .item{
-
    width:100%;
    height:400px;
-
-}
+ }
 .display-image{
-  position: relative;
+   position: relative;
 	 width:100%;
    height: 90%;
    padding: 0;
    margin: 0 auto;
 }
 video{
-  /*position: relative;*/
-  /*position: absolute;*/
    width:auto ;
    max-width: 100% !important;
-   height:400px;
+   height:350px;
    margin: 0 auto ;
    display:block;
-
-
 }
-/*video {
-   display:block;
-    width: 60%;
-    height: auto;
-    margin:10px auto;
-}*/
 .control{
   position: relative;
   height: 10%;
   width:100%;
   margin:5px auto;
-
-	color:#FE0000;
+  color:#FE0000;
 }
-
 a:hover{
    color:hotpink;
 }
@@ -111,15 +73,12 @@ a:active{
 .control button {
   margin-right: 2px;
 }
-
 .item-btn{
    background-color: #B3DBC0;
    display:inline-block;
 }
 .display-image .play{
-  position: absolute;
-   /*top:-35px;*/
-
+   position: absolute;
 }
 .display-image .back{
     position: absolute;
@@ -142,20 +101,16 @@ a:active{
     color: red;
 }
 .inlineElement{
-
-   display:inline-block;
+    display:inline-block;
 }
 .control img {
-  /*position: relative;
- /* margin: 5px 10px 0 0;*/
-  width:28px;
-  height:28px;
+   width:28px;
+   height:28px;
 }
 
 @media (min-width: 576px) {
   .list{
-      /*display:block;*/
-      background-color: grey;/*#B3DBC0;*/
+      background-color: grey;
       width: 20%;
       height:400px;
       overflow: scroll;
@@ -165,14 +120,12 @@ a:active{
   }
   .list img{
     display:block;
-    width:82px;
-    height:100px;
+    width:90%;
+    height:120px;
     margin: 0 auto;
-
   }
   .control{
-   width:90%;
-
+     width:90%;
   }
   .control img {
     width:32px;
@@ -181,7 +134,6 @@ a:active{
   .backP, .nextP, .commentP{
      position: relative;
      margin-right: 10px;
-
   }
   .display-image .source{
       bottom:4.5%;
@@ -189,19 +141,18 @@ a:active{
 }
  /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  /*.list img{
-    display:block;
-    width:85%;
-    margin: 0 auto;
-  }*/
   .control{
      width:90%;
    }
+   .list img{
+     width:85%;
+   }
    .control img {
-     /*position: relative;
-    /* margin: 5px 10px 0 0;*/
-     width:28px;
+    width:28px;
      height:28px;
+   }
+   video{
+      height:370px;
    }
  }
 
@@ -210,67 +161,44 @@ a:active{
   .row{
 		padding: 5px;
 	}
+  .list img{
+    width:60%;
+  }
   .list{
-
-      /*width:40%;*/
-      height:520px;
+    height:520px;
       overflow: scroll;
   }
-  /*.list img{
-    display:block;
-    width:60%;
-    margin: 0 auto;
-  }*/
   .item{
-
      height:520px;
-     /*margin: 0 auto;*/
   }
   .control{
      width:80%;
    }
    .control img {
-     /*position: relative;
-    /* margin: 5px 10px 0 0;*/
      width:32px;
      height:32px;
    }
-
+   video{
+      height:400px;
+   }
 }
 
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
   .list{
-
-      /*width:40%;*/
-
+     height:500px;
+     overflow: scroll;
       width: 20%;
-      height:500px;
-      overflow: scroll;
+  }
+  .list img{
+    width:50%;
   }
   .item{
-     width:100%;
      height:500px;
-
+     width:100%;
   }
-  /*.list img{
-    display:block;
-    width:50%;
-    margin: 0 auto;
-  }*/
-  .control{
-     /*width:75%;*/
-
-
-   }
-   .control img {
-     /*position: relative;
-    /* margin: 5px 10px 0 0;*/
-     width:32px;
+  .control img {
      height:32px;
-
-
+     width:32px;
    }
-
-
 }

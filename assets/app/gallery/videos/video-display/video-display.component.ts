@@ -20,7 +20,6 @@ export class VideoDisplayComponent implements OnInit {
   playPauseImage:string ="play.png";
   likeImage:string = "like1.png";
 
-  //all:Video[]=[];
   allVideos : Video1[] = [];
   videoList : Video1[] = [];
   selectedVideo:Video1 = {
@@ -35,60 +34,38 @@ export class VideoDisplayComponent implements OnInit {
     "source": 1,
     "uploadedDate": new Date()
   };
-  //tempPics : Pics[] = [ ];
   likesArr:any[] = [];
-
   errMessage : string = 'Loding Videos';
-
   displayMessage: any;
   subscription: Subscription;
   winWidth:number = 0;
 
    constructor(private galleryService: GalleryService) { }
-
    ngOnInit() {
+      this.setScreen(event);
       this.getAllVideos();
       this.getVideoDisplayMessage();
-      //this.getMyVideos();
-   }
+  }
    ngOnDestroy() {
      for(let video of this.allVideos){
-       //console.log(video.id);
-        if(this.likesArr[video.id] == true){
-           //++pict.likes;
-
+         if(this.likesArr[video.id] == true){
            this.galleryService.updateVideo(video)
               .subscribe(
                   result => console.log(result)
               );
-        }
-     }
+         }
+      }
       this.subscription.unsubscribe();
    }
-   /*getMyVideos(){
-     this.galleryService.getAllVideos()
-       .subscribe(
-           videos => {
-              this.all = videos;
-           },
-           error => {
-              console.log('error fetching pictures ******');
-              this.errMessage ='Error Fetching Pictures, Please Search Again';
-           }
-        );
-   }*/
    getAllVideos(){
      this.galleryService.getVideos()
        .subscribe(
            videos => {
-             //let tempPics : Pics[];
-              this.allVideos = videos;
+             this.allVideos = videos;
               for(let video of this.allVideos){
                  this.likesArr[video.id] = false;
               }
               this.setList({function:0, place:"Any", month:""});
-              //this.setPicsList(this.allPics);
-
            },
            error => {
               console.log('error fetching videos');
@@ -99,18 +76,13 @@ export class VideoDisplayComponent implements OnInit {
    getVideoDisplayMessage(){
      this.subscription = this.galleryService.getVideoDisplayMessage()
      .subscribe(message => {
-       //console.log(message);
-          this.setList(message);
-
-     });
+        this.setList(message);
+      });
    }
    setList(value){
-      //let myPics : Pics[] = [ ];
       let myVideo1 : Video1[] = [ ];
       let myVideo2 : Video1[] = [ ];
       let myVideo3 : Video1[] = [ ];
-      //let myAlbum4 : Album[] = [ ];
-
       if(value.function === 0 && value.place === "Any" && value.month === ""){
          myVideo1 = this.allVideos.slice();
          this.setVideoList(myVideo1.slice());
@@ -181,10 +153,8 @@ export class VideoDisplayComponent implements OnInit {
    setSelectedVideo(video){
      let index:number;
       this.selectedVideo = video;
-      //console.log(pic)
       this.myLikes = this.selectedVideo.likes;
       this.likes =  ' ' + this.myLikes;
-
       index = this.videoList.indexOf(this.selectedVideo);
       this.next = (this.videoList.length-1) - index;
       this.back = index;
@@ -193,7 +163,6 @@ export class VideoDisplayComponent implements OnInit {
       }else{
          this.likeImage = "like1.png";
       }
-
       this.setVideoSource(this.selectedVideo);
    }
    setVideoSource(video){
@@ -216,23 +185,19 @@ export class VideoDisplayComponent implements OnInit {
      index = this.videoList.indexOf(this.selectedVideo);
      if(this.likesArr[video.id] === false){
         this.likeImage = "like2.png";
-        //index = this.picsList.indexOf(this.selectedPics);
         ++this.videoList[index].likes;
         this.likes =  ' ' + this.selectedVideo.likes ;
         this.likesArr[video.id] = true;
      }else{
         this.likeImage = "like1.png";
-        //index = this.picsList.indexOf(this.selectedPics);
         --this.videoList[index].likes;
         this.likes =  ' ' + this.selectedVideo.likes;
         this.likesArr[video.id] = false;
      }
-
    }
    onBack(){
      let index:number = 0;
      let offset:number = 0;
-
      if(this.back > 0 && this.back <= this.videoList.length-1){
        ++this.next;
        --this.back;
@@ -242,7 +207,7 @@ export class VideoDisplayComponent implements OnInit {
           offset = index * 60 + (index * 4);
           this.list.nativeElement.scrollTo(offset,0);
        }else{
-         offset = index * 100 + (index * 4);
+         offset = index * 120 + (index * 4);
          this.list.nativeElement.scrollTo(0,offset);
        }
      }else{
@@ -254,7 +219,7 @@ export class VideoDisplayComponent implements OnInit {
           offset = index * 60 + (index * 4);
           this.list.nativeElement.scrollTo(offset,0);
        }else{
-         offset = index * 100 + (index * 4);
+         offset = index * 120 + (index * 4);
          this.list.nativeElement.scrollTo(0,offset);
        }
      }
@@ -268,7 +233,6 @@ export class VideoDisplayComponent implements OnInit {
    onNext(){
      let index:number;
      let offset:number = 0;
-
      if(this.next <= this.videoList.length-1 && this.next > 0){
        --this.next;
        ++this.back;
@@ -278,7 +242,7 @@ export class VideoDisplayComponent implements OnInit {
          offset = index * 60 + (index * 4);
          this.list.nativeElement.scrollTo(offset,0);
        }else{
-         offset = index * 100 + (index * 4);
+         offset = index * 120 + (index * 4);
          this.list.nativeElement.scrollTo(0,offset);
        }
      }else{
@@ -290,7 +254,7 @@ export class VideoDisplayComponent implements OnInit {
          offset = index * 60 + (index * 4);
          this.list.nativeElement.scrollTo(offset,0);
        }else{
-         offset = index * 100 + (index * 4);
+         offset = index * 120 + (index * 4);
          this.list.nativeElement.scrollTo(0,offset);
        }
      }
@@ -300,18 +264,6 @@ export class VideoDisplayComponent implements OnInit {
         this.likeImage = "like1.png";
      }
      this.likes =  ' ' + this.selectedVideo.likes ;
-   }
-   slidePlay(){
-     /*for(let video of this.all){
-       console.log(video);
-        this.galleryService.addVideo(video)
-        .subscribe(
-            data => console.log(data),
-            error => console.error(error)
-
-        );
-     }*/
-
    }
    setScreen(event){
        this.winWidth = window.outerWidth;

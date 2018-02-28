@@ -1,54 +1,30 @@
 
 .main-row {
   margin: 0 0 5px 5px;
-
-}
-.back {
-	/*cursor: pointer;
-	background: url(../../../../assets/images/back.png) no-repeat 5px 5px;
-	color: red;
-  padding:10px 20px 10px 10px;*/
 }
 .backP{
    position: relative;
    margin-right: 10px;
-
 }
-
 .likesP{
    float: right;
    margin: 0 auto;
-
-}
-
-.next {
-	/*cursor: pointer;
-	background: url(../../../../assets/images/next.png) no-repeat 30px 5px;
-	color: red;
-  padding:10px 15px 10px 20px;*/
 }
 .nextP{
   position:relative;
   margin-right: 0px;
-
-}
-.comment{
-
 }
 .commentP{
    position: relative;
    margin-right: 0px;
-
 }
 .list{
-    /*display:block;*/
     overflow: auto;
     white-space: nowrap;
     background-color: grey;/*#B3DBC0;*/
     width: 100%;
     height:75px;
-
-		border-radius:3px;
+    border-radius:3px;
 		margin-top: 5px;
     margin-bottom:5px;
     padding:0;
@@ -60,59 +36,47 @@
   height:75px;
 }
 .item{
-
    width:100%;
    height:400px;
-
 }
 .display-image{
-  position: relative;
+   position: relative;
 	 width:100%;
    height: 90%;
    padding: 0 ;
    margin: 0 auto;
 }
 .main-pix img{
-  /*position: relative;*/
-  /*position: absolute;*/
    width:auto;
    max-height:400px;
    margin: auto ;
    display:block;
-   /*overflow: hidden;*/
-
 }
 .control{
   position: relative;
   height: 10%;
   width:100%;
   margin:5px auto;
-
-	color:#FE0000;
+  color:#FE0000;
 }
-
 a:hover{
    color:hotpink;
 }
 a:active{
   color:green;
 }
-
 .commentP img{
    left:0px;
 }
 .control button {
   margin-right: 2px;
 }
-
 .item-btn{
    background-color: #B3DBC0;
    display:inline-block;
 }
 .display-image .play{
   position: absolute;
-   /*top:-35px;*/
-
 }
 .display-image .back{
     position: absolute;
@@ -139,14 +103,11 @@ a:active{
    display:inline-block;
 }
 .control img {
-  /*position: relative;
- /* margin: 5px 10px 0 0;*/
   width:28px;
   height:28px;
 }
 @media (min-width: 576px) {
   .list{
-      /*display:block;*/
       background-color: grey;/*#B3DBC0;*/
       width: 20%;
       height:400px;
@@ -155,26 +116,16 @@ a:active{
   		margin-top: 5px;
       padding: 1% 2%;
   }
-  /*.item{
-     display:block;
-     width:70%;
-     height:320px;
-
-  }*/
-  .list img{
+ .list img{
     display:block;
     width:90%;
-    height:auto;
+    height:120px;
     margin: 0 auto;
-
-  }
-  .control{
-   width:90%;
-
-  }
-  .control img {
-    /*position: relative;
-   /* margin: 5px 10px 0 0;*/
+ }
+ .control{
+    width:90%;
+ }
+ .control img {
     width:32px;
     height:32px;
   }
@@ -198,21 +149,16 @@ a:active{
      width:90%;
    }
    .control img {
-     /*position: relative;
-    /* margin: 5px 10px 0 0;*/
      width:32px;
      height:32px;
    }
  }
-
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
   .row{
 		padding: 5px;
 	}
   .list{
-
-      /*width:40%;*/
       height:520px;
       overflow: scroll;
   }
@@ -222,29 +168,21 @@ a:active{
     margin: 0 auto;
   }
   .item{
-
      height:520px;
-     /*margin: 0 auto;*/
   }
   .control{
      width:80%;
    }
    .control img {
-     /*position: relative;
-    /* margin: 5px 10px 0 0;*/
      width:32px;
      height:32px;
    }
 
 }
-
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
   .list{
-
-      /*width:40%;*/
-
-      width: 20%;
+     width: 20%;
       height:500px;
       overflow: scroll;
   }
@@ -258,19 +196,9 @@ a:active{
     width:50%;
     margin: 0 auto;
   }
-  .control{
-     /*width:75%;*/
-
-
-   }
-   .control img {
-     /*position: relative;
-    /* margin: 5px 10px 0 0;*/
+ .control img {
      width:32px;
      height:32px;
      text-decoration:
-
    }
-
-
-}
+ }

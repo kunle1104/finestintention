@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
+<form novalidate [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm)">
    <div class="form-group">
       <label for="styles">Styles </label>
       <select class="form-control" id="styles" formControlName="style">
@@ -31,18 +31,6 @@
          <option>Any</option>
       </select>
    </div>
-<!--<div class="form-group row">
-  <label for="color1" class="col-3 col-form-label">Color 1</label>
-  <div class="col-9">
-    <input class="form-control" type="color" value="#563d7c" id="color1">
-  </div>
-</div>
-   <div class="form-group row">
-  <label for="color2" class="col-3 col-form-label">Color 2</label>
-  <div class="col-9">
-    <input class="form-control" type="color" value="#563d7c" id="color2">
-  </div>
-</div>-->
    <div class="form-group">
       <label for="source">Source</label>
       <select class="form-control" id="source" formControlName="source">
@@ -53,13 +41,5 @@
          <option>Any</option>
       </select>
    </div>
-  <!-- <div class="form-group">
-      <label for="timeAdded">Time Added</label>
-      <select class="form-control" id="timeAdded" formControlName="timeAdded">
-         <option>Any</option>
-         <option>Recently</option>
-         <option>Old</option>
-      </select>
-   </div>-->
    <button type="submit" class="btn btn-primary">Search</button>
 </form>

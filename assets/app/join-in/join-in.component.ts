@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./join-in.component.css']
 })
 export class JoinInComponent implements OnInit {
-
+  joinInMenu : string[] = [];
   constructor() { }
 
   ngOnInit() {
