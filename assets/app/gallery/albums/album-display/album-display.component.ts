@@ -224,10 +224,10 @@ getAlbums(){
       this.selectedAlbum = this.albumList[--index];
       this.initPicsControl();
       if(this.winWidth < 576){
-         offset = index * 60 + (index * 4);
+         offset = index * 60 + (index * 4) -100;
          this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 120 + (index * 4);
+        offset = index * 120 + (index * 4) -100;
         this.list.nativeElement.scrollTo(0,offset);
       }
     }else{
@@ -237,10 +237,10 @@ getAlbums(){
       this.initPicsControl();
       index = this.albumList.length-1;;
       if(this.winWidth < 576){
-         offset = index * 60 + (index * 4);
+         offset = index * 60 + (index * 4) -100;
          this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 120 + (index * 4);
+        offset = index * 120 + (index * 4) -100;
         this.list.nativeElement.scrollTo(0,offset);
       }
     }
@@ -262,10 +262,10 @@ getAlbums(){
       this.selectedAlbum = this.albumList[++index];
       this.initPicsControl();
       if(this.winWidth < 576){
-        offset = index * 60 + (index * 4);
+        offset = index * 60 + (index * 4)-100;
         this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 120 + (index * 4);
+        offset = index * 120 + (index * 4)-100;
         this.list.nativeElement.scrollTo(0,offset);
       }
     }else{
@@ -275,10 +275,10 @@ getAlbums(){
       this.initPicsControl();
       index = 0;
       if(this.winWidth < 576){
-        offset = index * 60 + (index * 4);
+        offset = index * 60 + (index * 4) -100;
         this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 120 + (index * 4);
+        offset = index * 120 + (index * 4) -100;
         this.list.nativeElement.scrollTo(0,offset);
       }
     }

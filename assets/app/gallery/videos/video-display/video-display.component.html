@@ -12,7 +12,7 @@
   </div>
   <div class="item col-md-8 col-sm-9 col-xs-10">
        <div class="display-image">
-           <div class="main-pix" (swipeleft)="onBack()" (swiperight)="onNext()">
+           <div class="main-pix pt-2" (swipeleft)="onBack()" (swiperight)="onNext()">
               <div class="video-play" *ngFor="let vid of videoList" >
                  <video *ngIf= "vid === selectedVideo"
                          controls>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {PictureSearchComponent} from '../gallery/pictures/picture-search/picture-search.component';
+//import {PictureSearchComponent} from '../gallery/pictures/picture-search/picture-search.component';
 import { Subscription } from 'rxjs/Subscription';
 import {GalleryService} from '../gallery/gallery.service';
 

@@ -2,20 +2,28 @@
 .in{
     display:block;
 }
+.home{
+   position: absolute;
+   right:0;
+   top:0;
+}
 .navbar{
   background-color:white; /*#FDF6F6;*/
   border: 2px solid #67BACA;
 }
  .navbar a{
-   color: red;
+   color: #333;
    padding: 10px 20px;
 }
 .navbar a:hover{
+   color: red;
+}
+.navbar .router-link-active{
    color: blue;
 }
 .router-link-active {
-   border-bottom: 2px solid #333;
-   color: #B3DBC0;
+   border-bottom: 2px solid blue;
+   /*color: #B3DBC0;*/
 }
 h4{
   color:blue;
@@ -30,16 +38,4 @@ h4 img{
 p{
   color:black;
   margin-bottom: 0;
-}
-small{
-  color:red;
-}
-.sticky {
-    border-radius: 0 0 0.5em 0.5em;
-    margin-top: 0 !important;
-    position: fixed;
-    top: 0;
-    width:100%;
-    width:auto;
-    z-index: 10000;
 }

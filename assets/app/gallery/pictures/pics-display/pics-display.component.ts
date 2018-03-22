@@ -222,10 +222,10 @@ export class PicsDisplayComponent implements OnInit {
       index = this.picsList.indexOf(this.selectedPics);
       this.selectedPics = this.picsList[--index];
       if(this.winWidth < 576){
-         offset = index * 60 + (index * 4);
+         offset = index * 60 + (index * 4) - 100;
          this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 120 + (index * 4);
+        offset = index * 120 + (index * 4) - 100;
         this.list.nativeElement.scrollTo(0,offset);
       }
     }else{
@@ -234,10 +234,10 @@ export class PicsDisplayComponent implements OnInit {
       this.selectedPics = this.picsList[this.picsList.length-1];
       index = this.picsList.length-1;;
       if(this.winWidth < 576){
-         offset = index * 60 + (index * 4);
+         offset = index * 60 + (index * 4) -100;
          this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 120 + (index * 4);
+        offset = index * 120 + (index * 4) - 100;
         this.list.nativeElement.scrollTo(0,offset);
       }
     }
@@ -257,10 +257,10 @@ export class PicsDisplayComponent implements OnInit {
       index = this.picsList.indexOf(this.selectedPics);
       this.selectedPics = this.picsList[++index];
       if(this.winWidth < 576){
-        offset = index * 60 + (index * 4);
+        offset = index * 60 + (index * 4) -100;
         this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 120 + (index * 4);
+        offset = index * 120 + (index * 4) -100;
         this.list.nativeElement.scrollTo(0,offset);
       }
     }else{
@@ -269,10 +269,10 @@ export class PicsDisplayComponent implements OnInit {
       this.selectedPics = this.picsList[0];
       index = 0;
       if(this.winWidth < 576){
-        offset = index * 60 + (index * 4);
+        offset = index * 60 + (index * 4) - 100;
         this.list.nativeElement.scrollTo(offset,0);
       }else{
-        offset = index * 120 + (index * 4);
+        offset = index * 120 + (index * 4) - 100;
         this.list.nativeElement.scrollTo(0,offset);
       }
     }

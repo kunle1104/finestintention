@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule} from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import {RouterModule} from '@angular/router';
-import {SharedModule} from '../shared-module/shared.module';
+import { GalleryRoutingModule } from './gallery-routing.module';
 
 import { GalleryComponent } from './gallery.component';
 import { PicturesComponent } from './pictures/pictures.component';
@@ -16,7 +15,7 @@ import { AlbumDisplayComponent } from './albums/album-display/album-display.comp
 import { PictureSearchComponent } from './pictures/picture-search/picture-search.component';
 import { PicsDisplayComponent } from './pictures/pics-display/pics-display.component';
 import { SideBarComponent } from '../side-bar/side-bar.component';
-import {GalleryService} from './gallery.service';
+import { GalleryService } from './gallery.service';
 
 @NgModule({
   declarations:[
@@ -30,14 +29,13 @@ import {GalleryService} from './gallery.service';
     AlbumsComponent,
     AlbumDisplayComponent,
     AlbumSearchComponent,
-    SideBarComponent
+    SideBarComponent,
   ],
   imports:[
-    HttpModule,
     CommonModule,
+    HttpModule,
     ReactiveFormsModule,
-    RouterModule,
-    SharedModule
+    GalleryRoutingModule,
   ],
   providers: [GalleryService]
 })

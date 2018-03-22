@@ -1,6 +1,5 @@
-
 .main-row {
-  margin: 0 0 5px 5px;
+  margin: 0 0 5px 0;
 }
 .backP{
    position: relative;
@@ -42,7 +41,7 @@
 .display-image{
    position: relative;
 	 width:100%;
-   height: 90%;
+   height: 85%;
    padding: 0 ;
    margin: 0 auto;
 }
@@ -54,7 +53,7 @@
 }
 .control{
   position: relative;
-  height: 10%;
+  height: 15%;
   width:100%;
   margin:5px auto;
   color:#FE0000;
@@ -103,36 +102,35 @@ a:active{
    display:inline-block;
 }
 .control img {
-  width:28px;
   height:28px;
+  width:28px;
 }
 @media (min-width: 576px) {
   .list{
       background-color: grey;/*#B3DBC0;*/
-      width: 20%;
+      border-radius:3px;
       height:400px;
+      margin-top: 5px;
       overflow: scroll;
-  		border-radius:3px;
-  		margin-top: 5px;
       padding: 1% 2%;
+      width: 20%;
   }
  .list img{
     display:block;
-    width:90%;
     height:120px;
     margin: 0 auto;
+    width:90%;
  }
  .control{
     width:90%;
  }
  .control img {
-    width:32px;
     height:32px;
+    width:32px;
   }
-  .backP, .nextP, .commentP{
-     position: relative;
+  .backP, .commentP, .nextP {
      margin-right: 10px;
-
+     position: relative;
   }
   .display-image .source{
       bottom:4.5%;
@@ -142,16 +140,16 @@ a:active{
 @media (min-width: 768px) {
   .list img{
     display:block;
-    width:85%;
     margin: 0 auto;
+    width:85%;
   }
   .control{
      width:90%;
    }
    .control img {
-     width:32px;
-     height:32px;
-   }
+      height:32px;
+      width:32px;
+    }
  }
 /*Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
@@ -164,8 +162,8 @@ a:active{
   }
   .list img{
     display:block;
-    width:60%;
     margin: 0 auto;
+    width:60%;
   }
   .item{
      height:520px;
@@ -174,31 +172,30 @@ a:active{
      width:80%;
    }
    .control img {
-     width:32px;
      height:32px;
+     width:32px;
    }
 
 }
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
   .list{
-     width: 20%;
       height:500px;
       overflow: scroll;
+      width: 20%;
   }
   .item{
-     width:100%;
      height:500px;
-
+     width:100%;
   }
   .list img{
     display:block;
-    width:50%;
     margin: 0 auto;
+    width:50%;
+
   }
  .control img {
-     width:32px;
-     height:32px;
-     text-decoration:
+     height:34px;
+     width:34px;
    }
  }

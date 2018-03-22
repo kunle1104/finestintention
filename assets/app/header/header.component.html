@@ -1,42 +1,42 @@
-<div  class="top" (scroll)="myScrollHandler()">
+<div  class="top">
    <div class="name pl-2">
       <h4><img src="/assets/images/fi-logo64.png" class="img-fluid"/><span>Finest</span> Intention</h4>
    </div>
-  <!-- <div class="col-md-4 ">
-     <p>The very best of African styles</p>
-     <small>Culture, fashion, heritage. All in one place.</small>
-   </div>-->
-
 </div>
-<div id="sticky-anchor" #stickyAnchor></div>
-<div class= "sticky" [class.sticky]="addStickyClass" #sticky>
+
 <nav class="navbar navbar-toggleable-md navbar-light">
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
   (click)="toggleState()">
     <span class="navbar-toggler-icon"></span>
   </button>
-
+  <a class="navbar-brand home" routerLink="/">
+    <img src="/assets/images/home.png" class="img-fluid" width="30" height="30"/>
+  </a>
     <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">-->
     <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }">
     <!--<a class="navbar-brand" href="#">Home</a>-->
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/gallery" routerLinkActive="router-link-active" >
+        <a class="nav-link" routerLink="/gallery" routerLinkActive="router-link-active">
           Gallery
         </a>
       </li>
       <li class="nav-item" >
-        <a class="nav-link disabled" routerLink="/advert" routerLinkActive="router-link-active" >Adverts</a>
+        <a class="nav-link " routerLink="/advert" routerLinkActive="router-link-active" >
+          Adverts</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" routerLink="/join-in" routerLinkActive="router-link-active">Join in</a>
+        <a class="nav-link " routerLink="/join-in" routerLinkActive="router-link-active">
+          Join in</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" routerLink="/market" routerLinkActive="router-link-active">Market Place</a>
+        <a class="nav-link " routerLink="/market" routerLinkActive="router-link-active">
+          Market Place</a>
       </li>
   </ul>
 
   </div>
+
 </nav>
-</div>
