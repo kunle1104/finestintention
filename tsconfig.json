@@ -7,10 +7,6 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-
     "lib": [
       "es6",
       "dom"
@@ -19,6 +15,6 @@
       "node",
       "core-js",
      "hammerjs"
-   ],
+   ]
   }
 }
