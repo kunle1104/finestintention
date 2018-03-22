@@ -1,0 +1,29 @@
+button{
+  bottom:   0;
+  right:    20px;
+  position: absolute;
+}
+h4{
+  /*background-color: grey;/*#B3DBC0;*/
+  padding:10px 0;
+  text-align: center;
+}
+h5{
+  /*background-color: #67BACA;*/
+  padding:10px 0;
+  text-align: left;
+}
+.main-item{
+  /*border: 3px solid #67BACA;*/
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+p{
+  color: blue;
+  /*font-family: 'Coiny', cursive;*/
+  font-family: 'El Messiri', sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.col-md-6{
+  margin-top: -7px;
+}

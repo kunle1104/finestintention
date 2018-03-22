@@ -1,0 +1,17 @@
+<div [ngClass]="getClasses()" (window:load) = "appHandler($event)"
+             (window:resize) = "appHandler($event)" >
+  <header>
+     <app-header></app-header>
+  </header>
+  <main class="Site-content mb-0">
+     <router-outlet></router-outlet>
+
+  </main>
+  <footer>
+    <div class ="about">
+       <app-about></app-about>
+    </div>
+     <app-footer></app-footer>
+  </footer>
+
+</div>

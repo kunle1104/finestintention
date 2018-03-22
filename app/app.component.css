@@ -1,0 +1,20 @@
+
+
+header{
+  background-color:lightblue;
+  border-bottom: 2px black solid;
+  padding:10px 0;
+}
+main{
+  background-color: #FDF6F6;
+}
+.about{
+  background-color: #67BACA;
+  clear: both;
+  padding:10px 0;
+}
+footer{
+  background-color: lightgrey;
+  border-bottom:2px #FE0000  solid;
+  color :white;
+}

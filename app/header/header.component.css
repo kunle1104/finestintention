@@ -1,0 +1,41 @@
+
+.in{
+    display:block;
+}
+.home{
+   position: absolute;
+   right:0;
+   top:0;
+}
+.navbar{
+  background-color:white; /*#FDF6F6;*/
+  border: 2px solid #67BACA;
+}
+ .navbar a{
+   color: #333;
+   padding: 10px 20px;
+}
+.navbar a:hover{
+   color: red;
+}
+.navbar .router-link-active{
+   color: blue;
+}
+.router-link-active {
+   border-bottom: 2px solid blue;
+   /*color: #B3DBC0;*/
+}
+h4{
+  color:blue;
+  font-family: 'Prosto One', cursive;
+}
+h4 span{
+   color:red;
+}
+h4 img{
+   width:48px;
+}
+p{
+  color:black;
+  margin-bottom: 0;
+}

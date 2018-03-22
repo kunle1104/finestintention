@@ -1,0 +1,36 @@
+<div class="row main-row" (window:load) = "setScreen($event)" (window:resize) = "setScreen($event)">
+   <div class="list col-md-4 col-sm-3 col-xs-2" #list>
+     <div *ngIf="picsList === undefined || picsList.length === 0">
+       {{errMessage}}
+     </div>
+    <div *ngIf="picsList != undefined" >
+        <a *ngFor="let pics of picsList" (click)="setSelectedPics(pics)">
+           <img [src]="'/assets/gallery/' + pics.path" class="img-fluid img-thumbnail mt-1"
+           [style.border]="pics == selectedPics ? '2px solid red': '1px solid white' " />
+        </a>
+   </div>
+  </div>
+  <div class="item col-md-8 col-sm-9 col-xs-10">
+      <div class="display-image">
+          <div class="main-pix" (swipeleft)="onBack()" (swiperight)="onNext()" >
+            <img [src]= "'/assets/gallery/' + selectedPics.path"
+                class="img-fluid img-responsive img-thumbnail mt-1"/>
+          </div>
+          <p class="source">Source: <span>{{source}} </span></p>
+          <img [src]="'/assets/images/' + playPauseImage" class="img-fluid play" (click)="slidePlay()"/>
+          <img src="/assets/images/back.png" class="img-fluid back"(click)="onBack()"/>
+          <img src="/assets/images/next.png" class="img-fluid next"(click)="onNext()"/></div>
+       <div *ngIf="picsList.length !== 0" class="control">
+         <p class="inlineElement backControl">
+            {{back}}<img src="/assets/images/back.png" class="img-fluid back"(click)="onBack()"/>
+         </p>
+         <p class="inlineElement nextControl">
+            <img src="/assets/images/next.png" class="img-fluid next"(click)="onNext()"/>{{next}}
+         </p>
+         <p class=" likesP" >
+              <img  [src]="'/assets/images/' + likeImage" class="img-fluid likes"(click)="onLike(selectedPics)"/>
+              {{likes}}
+          </p>
+       </div>
+    </div>
+</div>

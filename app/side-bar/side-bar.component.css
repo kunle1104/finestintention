@@ -1,0 +1,41 @@
+#picSearch{
+	/*background-color: ;
+	color:#FE0000;*/
+	margin:0 20px;
+}
+#open {
+	margin: 0;
+	cursor: pointer;
+	background: #67BACA url(../../assets/images/open.png) no-repeat 8px 15px;
+	color:#FE0000;
+	padding: 10px 0 10px 30px;
+	border-radius:3px;
+}
+
+.close {
+	background-image: url(../../assets/images/close.png);
+	/*background-color: rgb(110,138,195);*/
+
+  background-color: #B3DBC0;
+}
+
+#open:hover {
+	background-color:  #B3DBC0;/*rgb(110,138,195);*/
+	color: rgb(0,0,0);
+}
+@media (min-width: 576px) { }
+
+
+@media (min-width: 768px) {
+
+}
+
+
+@media (min-width: 992px) {
+
+}
+
+
+@media (min-width: 1200px) {
+
+}
