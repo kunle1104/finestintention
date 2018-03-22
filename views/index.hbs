@@ -5,15 +5,31 @@
         <title>Finest Intension - African Styles</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+           html {
+              font-size: 0.8rem;
+           }
+           #wait{
+             width:64px;
+             height:auto;
+             display: block;
+             margin: 150px auto;
+           }
+           @media (min-width: 768px) {
+             html {
+              font-size: 1.0rem;
+            }
+           }
+       </style>
        <link rel="icon" type="image/x-icon" href="favicon.ico">
 
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-      
-       <link href="https://fonts.googleapis.com/css?family=Anton|Catamaran|Fjalla+One|Prosto+One" rel="stylesheet">
+
+       <link href="https://fonts.googleapis.com/css?family=El+Messiri|Prosto+One|Coiny" rel="stylesheet">
        <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
     </head>
     <body>
-        <app-root>Loading...</app-root>
+        <app-root><img id = "wait" src="loading.gif" height="64" width="64"></app-root>
         <script src="/js/app/bundle.js"></script>
     </body>
 </html>
